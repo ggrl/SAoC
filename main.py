@@ -49,9 +49,9 @@ if __name__ == '__main__':
     while True:
         if targeting.targeting(pull_key, pull_weapon):
             if targeting.pull_check(pull_key, pull_weapon):
-                if role():
+                if role(pull_weapon):
                     buffx = buffx + 1
-                    print("Buffen in", 20-buffx, "pulls.")
+                    print("Buffing in", 20-buffx, "pulls.")
                     if buffx >= 20:
                         buffx = 0
                         if regging.buffing(buffcount):
