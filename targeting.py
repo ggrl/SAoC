@@ -107,7 +107,7 @@ def targeting(pull_key, pull_weapon):
 
         #print('x7')
         
-        if get_px('targetbar', 'green') > 300000:
+        if get_px('targetbar', 'blue') > 450000:
                print('New Target.')
                return True
            

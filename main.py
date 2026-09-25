@@ -1,13 +1,16 @@
-import targeting
-import fight
-import dik_keys
 import time
-import regging
 from pynput.mouse import Button, Controller
 from pynput import mouse
 import sys
 import importlib
+
+#local dep
+
 import UI_config
+import targeting
+import fight
+import dik_keys
+import regging
 
 '''
 Fight-Bar:5

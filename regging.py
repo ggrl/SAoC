@@ -14,9 +14,12 @@ def regging(sitkey, endu, mana):
     manax = mana
     while True:
         time.sleep(2)
-        if targeting.get_px('healthbar', 'red') > 150000:
-            if not manax or targeting.get_px('manabar', 'green') > 140000:
-                if not endux or targeting.get_px('endubar', 'green') > 45000:
+        if targeting.get_px('healthbar', 'red') > 350000:
+            print('-- Health OK --')
+            if not manax or targeting.get_px('manabar', 'green') > 100000:
+                print('-- Mana OK --')
+                if not endux or targeting.get_px('endubar', 'green') > 75000:
+                    print('-- Endu OK --')
                     time.sleep(2)
                     print('--------| regging done |---------')
                     time.sleep(2)    

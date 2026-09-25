@@ -2,6 +2,8 @@ import numpy as np
 import cv2
 from PIL import ImageGrab as ig
 import time
+
+#local dp
 import UI_config
 import dik_keys
 import targeting
@@ -63,10 +65,9 @@ def thane(pull_weapon):
     x = 0
     y = 10
     while True:
-        if targeting.get_px('targetbar', 'red') > 350000 or x >= y:
-            #equip bow
+        if targeting.get_px('targetbar', 'blue') < 200000 or x >= y:
             dik_keys.Press(pull_weapon)    
-            print('fight beendet')
+            print('fight finished')
             return True  
         else:
             dik_keys.Press('5')
