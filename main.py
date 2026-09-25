@@ -5,6 +5,9 @@ import time
 import regging
 from pynput.mouse import Button, Controller
 from pynput import mouse
+import sys
+import importlib
+import UI_config
 
 '''
 Fight-Bar:5
@@ -14,6 +17,7 @@ Utility-Bar: 7
 
 # --- Configuration ---#
 
+resolution = '1920'
 pull_weapon = 'F1'
 sit_key = 'N'
 pull_key = '3'
@@ -26,8 +30,18 @@ buffcount = 5  #max: 9 buffs
 
 buffx = 0
 salx = 0
+tryx = 0
+UI_config.current = importlib.import_module(f"UI_config_{resolution}")
 
 mouse = Controller()
+
+def countdown():
+    cd = 5
+    print("|------- Start --------|")
+    for i in range(0,cd):
+        print(cd-i)
+        time.sleep(1.5)
+    return True    
 
 def getReady():
     mouse.position = (310,9)
@@ -45,10 +59,16 @@ def getReady():
 
 
 if __name__ == '__main__':
-    getReady()
+    if countdown():
+        getReady()
     while True:
         if targeting.targeting(pull_key, pull_weapon):
-            if targeting.pull_check(pull_key, pull_weapon):
+            tryx +=1
+            if tryx >= 10:
+                sys.exit("0")
+            
+            elif targeting.pull_check(pull_key, pull_weapon):
+                tryx = 0
                 if role(pull_weapon):
                     buffx = buffx + 1
                     print("Buffing in", 20-buffx, "pulls.")

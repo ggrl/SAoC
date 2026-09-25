@@ -15,16 +15,16 @@ mouse = Controller()
 
 def get_px(bar, color):
             image = ig.grab(bbox=(
-                getattr(UI_config, bar + 'x1'),
-                getattr(UI_config, bar + 'y1'),
-                getattr(UI_config, bar + 'x2'),
-                getattr(UI_config, bar + 'y2')
+                getattr(UI_config.current, bar + 'x1'),
+                getattr(UI_config.current, bar + 'y1'),
+                getattr(UI_config.current, bar + 'x2'),
+                getattr(UI_config.current, bar + 'y2')
             ))
     
             frame = np.array(image)
     
-            h = getattr(UI_config, bar + 'h')
-            w = getattr(UI_config, bar + 'w')
+            h = getattr(UI_config.current, bar + 'h')
+            w = getattr(UI_config.current, bar + 'w')
     
             region_bar = frame[:h, :w]
     
@@ -48,7 +48,7 @@ def get_px(bar, color):
 
 
 def targeting(pull_key, pull_weapon):
-    screen = ig.grab(bbox=(UI_config.scrnx1,UI_config.scrny1,UI_config.scrnx2,UI_config.scrny2))
+    screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
     current_frame = np.array(screen)
     previous_frame = current_frame
     print(pull_key)
@@ -61,7 +61,7 @@ def targeting(pull_key, pull_weapon):
     #while (True):
     for i in range(0,10):
         #print('x1')
-        screen = ig.grab(bbox=(UI_config.scrnx1,UI_config.scrny1,UI_config.scrnx2,UI_config.scrny2))
+        screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
         current_frame = np.array(screen)
         
         
@@ -94,7 +94,7 @@ def targeting(pull_key, pull_weapon):
         #print('x5')
         centerx = (max_loc[0]-3, max_loc[1]+3)
 
-        centerx_ig = (centerx[0]+UI_config.scrnx1, centerx[1]+UI_config.scrny1) 
+        centerx_ig = (centerx[0]+UI_config.current.scrnx1, centerx[1]+UI_config.current.scrny1) 
         
         cv2.circle(frame_thresh_c,(centerx), 20, (0,255,), 2)
 
@@ -126,25 +126,25 @@ def pull_check(pull_key, pull_weapon):
         targeting(pull_key, pull_weapon)            
 
 def test_targeting():        
-            target = ig.grab(bbox=(UI_config.targetx1,UI_config.targety1,UI_config.targetx2,UI_config.targety2))
+            target = ig.grab(bbox=(UI_config.current.targetx1,UI_config.current.targety1,UI_config.current.targetx2,UI_config.current.targety2))
             target_frame = np.array(target)
              
             tredpx = 0
             tgreenpx = 0
             tbluepx = 0
-            region = target_frame[:UI_config.targeth, :UI_config.targetw]
+            region = target_frame[:UI_config.current.targeth, :UI_config.current.targetw]
             tredpx, tgreenpx, tbluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
             print("red", tredpx)
             print("green", tgreenpx)
             print("blue", tbluepx)
 
 def test_targeting2():  
-         cchat = ig.grab(bbox=(UI_config.cchatx1,UI_config.cchaty1,UI_config.cchatx2,UI_config.cchaty2))
+         cchat = ig.grab(bbox=(UI_config.current.cchatx1,UI_config.current.cchaty1,UI_config.current.cchatx2,UI_config.current.cchaty2))
          cchat_frame = np.array(cchat)
          redpx = 0
          greenpx = 0
          bluepx = 0
-         region = cchat_frame[:UI_config.cchath, :UI_config.cchatw]
+         region = cchat_frame[:UI_config.current.cchath, :UI_config.current.cchatw]
          redpx, greenpx, bluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
          print("red",redpx)
          print("green", greenpx)

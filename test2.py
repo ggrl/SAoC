@@ -1,13 +1,12 @@
-def def1():
-   if 1 == 1:
-      return def2()
-   else: 
-      return False   
+import config
+import config_A
+import config_B
+import test3
 
-def def2():
-    return True   
+config.current = config_B
 
- 
+
+test3.out()
    
  
 

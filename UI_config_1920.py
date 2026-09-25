@@ -1,7 +1,7 @@
-scrnx1 = 340
-scrny1 = 30
-scrnx2 = 1640
-scrny2 = 500
+scrnx1 = 80
+scrny1 = 40
+scrnx2 = 1800
+scrny2 = 650
 scrnw = scrnx2 - scrnx1
 scrnh = scrny2 - scrny1
 

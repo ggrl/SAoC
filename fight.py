@@ -12,11 +12,6 @@ def hunter(pull_weapon):
     print('--------| FIGHT rotation |---------')
     bowdelay = 4.5
     meleedelay = 3.5
-    target = ig.grab(bbox=(UI_config.targetx1,UI_config.targety1,UI_config.targetx2,UI_config.targety2))
-    target_frame = np.array(target)
-    tredpx = 0
-    region = target_frame[:UI_config.targeth, :UI_config.targetw]
-    tredpx, tgreenpx, tbluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
     time.sleep(.5)
     dik_keys.Press('4')
     time.sleep(bowdelay)
@@ -50,11 +45,6 @@ def thane(pull_weapon):
     print('--------| FIGHT rotation |---------')
     castdelay = 3
     meleedelay = 3.5
-    target = ig.grab(bbox=(UI_config.targetx1,UI_config.targety1,UI_config.targetx2,UI_config.targety2))
-    target_frame = np.array(target)
-    tredpx = 0
-    region = target_frame[:UI_config.targeth, :UI_config.targetw]
-    tredpx, tgreenpx, tbluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
     time.sleep(.5)
     dik_keys.Press('4')
     time.sleep(.5)

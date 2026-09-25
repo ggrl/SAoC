@@ -1,3 +1,4 @@
-import test2
+import config
 
-print(test2.def1())
+def out():
+    print(config.current.x)
