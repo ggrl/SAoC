@@ -6,7 +6,7 @@ import importlib
 
 #local dep
 
-import UI_config
+import configs.UI_config as UI_config
 import targeting
 import fight
 import dik_keys
@@ -36,7 +36,7 @@ buffcount = 5  #max: 9 buffs
 buffx = 0
 salx = 0
 tryx = 0
-UI_config.current = importlib.import_module(f"UI_config_{resolution}")
+UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
 
 mouse = Controller()
 

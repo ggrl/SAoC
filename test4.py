@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 from PIL import ImageGrab as ig
 import time
-import UI_config
+import configs.UI_config as UI_config
 import dik_keys
 
 

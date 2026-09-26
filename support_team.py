@@ -4,6 +4,7 @@ import time
 
 
 #local dp
+import configs.UI_config as UI_config
 import fight
 import regging
 import dik_keys

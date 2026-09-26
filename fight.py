@@ -4,7 +4,7 @@ from PIL import ImageGrab as ig
 import time
 
 #local dp
-import UI_config
+import configs.UI_config as UI_config
 import dik_keys
 import targeting
 
@@ -57,7 +57,7 @@ def thane(pull_weapon):
     time.sleep(.5)
     dik_keys.Press('4')
     time.sleep(.5)
-    for x in range(4):
+    for x in range(3):
         dik_keys.Press('3')
         time.sleep(castdelay)
     dik_keys.Press('F1')
@@ -67,7 +67,9 @@ def thane(pull_weapon):
     x = 0
     y = 10
     while True:
-        if targeting.get_px('targetbar', 'blue') < 200000 or x >= y:
+        if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:
+            dik_keys.Press('2')
+            time.sleep(meleedelay)
             dik_keys.Press(pull_weapon)    
             print('fight finished')
             return True  
@@ -134,7 +136,7 @@ def thane_ae_team(pull_weapon):
         x = 0
         y = 10
         while True:
-            if targeting.get_px('targetbar', 'blue') < 200000 or x >= y:    
+            if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
                 print('fight finished')
                 return True  
             else:

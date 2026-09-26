@@ -7,7 +7,7 @@ import socket
 
 #local dep
 
-import UI_config
+import configs.UI_config as UI_config
 import targeting
 import fight
 import dik_keys
