@@ -73,25 +73,18 @@ def targeting(pull_key, pull_weapon):
     
         #cv2.imshow("current", current_frame_gray)
         #cv2.imshow("difference", frame_difference)
-
-        
-
         previous_frame = current_frame
         ret,frame_thresh = cv2.threshold(frame_difference,3,255,0)
-
-        #print('x3')
-        ##contours, hierarchy = cv2.findContours(frame_thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+        #cv2.imwrite("frame_thresh.jpg", frame_thresh)
         #cv2.imshow("frame_thresh", frame_thresh)
 
         frame_thresh_c = cv2.cvtColor(frame_thresh, cv2.COLOR_GRAY2BGR)
 
-        #print('x4')
         find = cv2.matchTemplate(frame_thresh,whiteten,cv2.TM_CCOEFF)
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(find)
 
         top_left = max_loc
         bottom_right = (top_left[0]+20, top_left[1]+20)
-        #print('x5')
         centerx = (max_loc[0]-3, max_loc[1]+3)
 
         centerx_ig = (centerx[0]+UI_config.current.scrnx1, centerx[1]+UI_config.current.scrny1) 
@@ -100,12 +93,9 @@ def targeting(pull_key, pull_weapon):
 
         #print('x6')
         mouse.position = centerx_ig
-        time.sleep(0.02)
-        mouse.press(Button.left)
-        time.sleep(0.05)
-        mouse.release(Button.left)
+        dik_keys.Click()
+        time.sleep(.2)
 
-        #print('x7')
         
         if get_px('targetbar', 'blue') > 450000:
                print('New Target.')
