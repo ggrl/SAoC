@@ -1,8 +1,7 @@
-import dik_keys
 import time
-import UI_config
-import targeting
 
-targeting.targeting('2')
-#targeting.test_targeting()
-#targeting.test_targeting2()
+def def_a(stopevent):
+    time.sleep(2)
+    print("Funktion A (test.def_a()) ausgef")
+    time.sleep(4)
+    print("fertig")

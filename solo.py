@@ -29,6 +29,8 @@ endu_reg = True
 role = fight.thane
 buffcount = 5  #max: 9 buffs
 
+#--------------------------#
+
 # Variables
 
 buffx = 0

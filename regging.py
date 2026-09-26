@@ -1,14 +1,16 @@
-import dik_keys
-import time
-import UI_config
-import numpy as np
-import cv2
-from PIL import ImageGrab as ig
-import targeting
 
-def regging(sitkey, endu, mana):
+import time
+import numpy as np
+from PIL import ImageGrab as ig
+
+#local dp
+import targeting
+import dik_keys
+
+
+
+def regging(sitkey, endu, mana, stop_event=None):
     print('--------| regging start |---------')
-    regx = 1
     dik_keys.Press(sitkey)
     endux = endu
     manax = mana
@@ -26,7 +28,13 @@ def regging(sitkey, endu, mana):
                     dik_keys.Press(sitkey)
                     return True
 
-def buffing(count):
+def regging_lead(sitkey):
+    print('--------| regging start |---------')
+    dik_keys.Press(sitkey)
+
+
+
+def buffing(count, stop_event=None):
     print('--------| buffing start |---------')
     x = count
     #go to bar 7
@@ -38,6 +46,11 @@ def buffing(count):
     time.sleep(1)
     dik_keys.Combo("SHIFT", "5") 
     return True  
+
+def wait(stop_event):
+    while not stop_event.is_set():
+        time.sleep(2)
+
 
 
 def salvage():
