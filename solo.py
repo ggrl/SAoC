@@ -69,7 +69,7 @@ if __name__ == '__main__':
     while True:
         if targeting.targeting(pull_key, pull_weapon):
             tryx +=1
-            if tryx >= 10:
+            if tryx >= 50:
                 sys.exit("0")
             
             elif targeting.pull_check(pull_key, pull_weapon):

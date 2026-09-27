@@ -30,7 +30,7 @@ mana_reg = True
 role = fight.thane_ae_team
 buffcount = 5  #max: 9 buffs
 pullcount = 3 #pulls until reg
-heal_IP = "192.168.0.0"
+heal_IP = "192.168.0.42"
 bomb_IP = "192.168.0.0"
 team = {"heal": heal_IP, "bomb": bomb_IP}
 
@@ -67,6 +67,8 @@ def getReady():
     time.sleep(.5)
     dik_keys.Press(pull_key)
     time.sleep(.5)
+
+
 
 def send_forget(command, target):
     IP = team[target]
