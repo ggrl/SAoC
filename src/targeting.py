@@ -62,7 +62,6 @@ def targeting(pull_key, pull_weapon):
     
     #while (True):
     for i in range(0,10):
-        #print('x1')
         screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
         current_frame = np.array(screen)
         
@@ -70,7 +69,6 @@ def targeting(pull_key, pull_weapon):
     
         current_frame_gray = cv2.cvtColor(current_frame, cv2.COLOR_BGR2GRAY)
         previous_frame_gray = cv2.cvtColor(previous_frame, cv2.COLOR_BGR2GRAY)
-        #print('x2')
         frame_difference = cv2.absdiff(current_frame_gray, previous_frame_gray)
     
         #cv2.imshow("current", current_frame_gray)
@@ -93,7 +91,6 @@ def targeting(pull_key, pull_weapon):
         
         cv2.circle(frame_thresh_c,(centerx), 20, (0,255,), 2)
 
-        #print('x6')
         mouse.position = centerx_ig
         dik_keys.Click()
         time.sleep(.2)

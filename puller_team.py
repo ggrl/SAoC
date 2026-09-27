@@ -72,7 +72,7 @@ def getReady():
 
 
 def send_forget(command, target):
-    
+    print(f"Sending command '{command}' to {target}.")
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((target, 5000))
 
@@ -81,7 +81,7 @@ def send_forget(command, target):
     client.close()
 
 def send_wait(command, target):
-
+    print(f"Sending command '{command}' to {target} and waiting for response.")
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((target, 5000))
 
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     while True:
         if targeting.targeting(pull_key, pull_weapon):
             tryx +=1
-            if tryx >= 10:
+            if tryx >= 50:
                 sys.exit("0")
             
             elif targeting.pull_check(pull_key, pull_weapon):
@@ -124,7 +124,10 @@ if __name__ == '__main__':
                     elif pullx >= pullcount:
                         pullx = 0
                         dik_keys.Press(sit_key)
+                        time.sleep(.5)
                         print("|------- TEAM regging -------|")
                         for x in team:
                             print(f"|-- {team[x]}: response: ", send_wait('regg', team[x]), " --|")
+                        dik_keys.Press(sit_key)
+                        time.sleep(.5)
                         regging.regging(sit_key, mana_reg, endu_reg)            
