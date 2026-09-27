@@ -25,7 +25,7 @@ pull_key = '3'
 endu = False #need endu?
 mana = True #need mana?
 role = 'healer_ae_team'
-buffcount = 5  #max: 9 buffs
+buffcount = 3  #max: 9 buffs
 grp_size = 3
 
 #-----------------------------#

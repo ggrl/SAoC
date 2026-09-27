@@ -28,7 +28,7 @@ pull_key = '6'
 endu_reg = True
 mana_reg = True
 role = fight.thane_ae_team
-buffcount = 5  #max: 9 buffs
+buffcount = 3  #max: 9 buffs
 pullcount = 3 #pulls until reg
 heal_IP = "192.168.0.42"
 team = {"heal": heal_IP}
@@ -55,12 +55,13 @@ def countdown():
     return True    
 
 def getReady():
-    mouse.position = (310,9)
-    time.sleep(0.02)
-    mouse.press(Button.left)
-    time.sleep(0.05)
-    mouse.release(Button.left)
-    
+    mouse.position = (5,5)
+    time.sleep(0.5)
+    dik_keys.Click()
+    time.sleep(0.5)
+    regging.buffing(buffcount)
+    for x in team:
+        send_forget('start', team[x])
     dik_keys.Combo('SHIFT', '5') #go to fight-bar
     time.sleep(.5)
     dik_keys.Press(pull_weapon) #equip pull-weapon

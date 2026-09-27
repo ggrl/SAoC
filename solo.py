@@ -27,7 +27,7 @@ pull_key = '3'
 mana_reg = True
 endu_reg = True
 role = fight.thane
-buffcount = 5  #max: 9 buffs
+buffcount = 3  #max: 9 buffs
 
 #--------------------------#
 
@@ -49,12 +49,11 @@ def countdown():
     return True    
 
 def getReady():
-    mouse.position = (310,9)
-    time.sleep(0.02)
-    mouse.press(Button.left)
-    time.sleep(0.05)
-    mouse.release(Button.left)
-    
+    mouse.position = (5,5)
+    time.sleep(0.5)
+    dik_keys.Click()
+    time.sleep(0.5)
+    regging.buffing(buffcount)
     dik_keys.Combo('SHIFT', '5') #go to fight-bar
     time.sleep(.5)
     dik_keys.Press(pull_weapon) #equip pull-weapon
