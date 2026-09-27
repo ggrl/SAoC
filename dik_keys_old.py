@@ -1,13 +1,15 @@
-# Tastatur und Maus per Name steuern (Windows, SendInput)
-#   Press('A'), Combo('CTRL', 'C'), Hold('W', 2)
-#   Click(), Click('right'), DoubleClick(), Scroll(-3), MoveRel(100, 0), MoveTo(960, 540)
-import ctypes
+# Tastendruck per Name statt Hex-Code: Press('A'), Press('F5'), Combo('LCONTROL', 'C')
+# Erwartet, dass PressKey(hexKeyCode) / ReleaseKey(hexKeyCode) bereits definiert sind
+# (siehe dik_keys.py, inkl. Extended-Key-Behandlung für Codes >= 0x80).
 import time
 import difflib
+# DirectInput Scan Codes (DIK_*) als Python-Funktionen
+# Benötigt Windows (ctypes / SendInput mit Scan-Codes).
+import ctypes
+import time
 
-delay1 = 0.05  # Standard-Haltedauer in Sekunden
+delay1 = 0.05  # Haltedauer der Taste in Sekunden
 
-# ---------------------------------------------------------------- ctypes-Strukturen
 SendInput = ctypes.windll.user32.SendInput
 PUL = ctypes.POINTER(ctypes.c_ulong)
 
@@ -31,32 +33,30 @@ class Input_I(ctypes.Union):
 class Input(ctypes.Structure):
     _fields_ = [("type", ctypes.c_ulong), ("ii", Input_I)]
 
-INPUT_MOUSE = 0
-INPUT_KEYBOARD = 1
-
-# ---------------------------------------------------------------- Tastatur (Hex-Ebene)
 KEYEVENTF_EXTENDEDKEY = 0x0001
 KEYEVENTF_KEYUP = 0x0002
 KEYEVENTF_SCANCODE = 0x0008
 
-def _send_key(hexKeyCode, flags):
+def _send(hexKeyCode, flags):
+    # Codes >= 0x80 sind "extended keys" (E0-Präfix)
     scan = hexKeyCode
-    if hexKeyCode > 0x7F:              # Extended Key (E0-Präfix), z.B. Pfeiltasten
+    if hexKeyCode > 0x7F:
         scan = hexKeyCode & 0x7F
         flags |= KEYEVENTF_EXTENDEDKEY
     extra = ctypes.c_ulong(0)
     ii_ = Input_I()
     ii_.ki = KeyBdInput(0, scan, flags, 0, ctypes.pointer(extra))
-    x = Input(ctypes.c_ulong(INPUT_KEYBOARD), ii_)
+    x = Input(ctypes.c_ulong(1), ii_)
     SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
 
 def PressKey(hexKeyCode):
-    _send_key(hexKeyCode, KEYEVENTF_SCANCODE)
+    _send(hexKeyCode, KEYEVENTF_SCANCODE)
 
 def ReleaseKey(hexKeyCode):
-    _send_key(hexKeyCode, KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP)
+    _send(hexKeyCode, KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP)
 
-# ---------------------------------------------------------------- Tastatur (Namen)
+
+
 # DirectInput Scan-Codes (DIK_*)
 KEYS = {
     'ESCAPE': 0x01,
@@ -268,140 +268,9 @@ def Hold(key, seconds):
     Press(key, delay=seconds)
 
 
-
-# ---------------------------------------------------------------- Maus
-MOUSEEVENTF_MOVE       = 0x0001
-MOUSEEVENTF_LEFTDOWN   = 0x0002
-MOUSEEVENTF_LEFTUP     = 0x0004
-MOUSEEVENTF_RIGHTDOWN  = 0x0008
-MOUSEEVENTF_RIGHTUP    = 0x0010
-MOUSEEVENTF_MIDDLEDOWN = 0x0020
-MOUSEEVENTF_MIDDLEUP   = 0x0040
-MOUSEEVENTF_XDOWN      = 0x0080
-MOUSEEVENTF_XUP        = 0x0100
-MOUSEEVENTF_WHEEL      = 0x0800
-MOUSEEVENTF_HWHEEL     = 0x1000
-MOUSEEVENTF_ABSOLUTE   = 0x8000
-WHEEL_DELTA = 120  # eine Raste am Mausrad
-
-# Taste -> (Flag runter, Flag hoch, mouseData)
-BUTTONS = {
-    'left':   (MOUSEEVENTF_LEFTDOWN,   MOUSEEVENTF_LEFTUP,   0),
-    'right':  (MOUSEEVENTF_RIGHTDOWN,  MOUSEEVENTF_RIGHTUP,  0),
-    'middle': (MOUSEEVENTF_MIDDLEDOWN, MOUSEEVENTF_MIDDLEUP, 0),
-    'x1':     (MOUSEEVENTF_XDOWN,      MOUSEEVENTF_XUP,      1),  # Seitentaste "zurück" (Maus 4)
-    'x2':     (MOUSEEVENTF_XDOWN,      MOUSEEVENTF_XUP,      2),  # Seitentaste "vor" (Maus 5)
-}
-BUTTON_ALIASES = {'l': 'left', 'links': 'left', 'r': 'right', 'rechts': 'right',
-                  'm': 'middle', 'mitte': 'middle', 'mouse4': 'x1', 'mouse5': 'x2'}
-
-# Echte Pixel statt skalierter Werte bei Windows-Skalierung (125 %, 150 % ...)
-try:
-    ctypes.windll.user32.SetProcessDPIAware()
-except Exception:
-    pass
-
-
-def _send_mouse(flags, dx=0, dy=0, data=0):
-    extra = ctypes.c_ulong(0)
-    ii_ = Input_I()
-    ii_.mi = MouseInput(dx, dy, data & 0xFFFFFFFF, flags, 0, ctypes.pointer(extra))
-    x = Input(ctypes.c_ulong(INPUT_MOUSE), ii_)
-    SendInput(1, ctypes.pointer(x), ctypes.sizeof(x))
-
-
-def _button(button):
-    name = BUTTON_ALIASES.get(button.lower(), button.lower())
-    if name not in BUTTONS:
-        raise KeyError(f"Unbekannte Maustaste '{button}' - erlaubt: {list(BUTTONS)}")
-    return BUTTONS[name]
-
-
-def MoveRel(dx, dy):
-    """Maus relativ bewegen (in Spielen meist das Richtige, z.B. zum Umschauen)."""
-    _send_mouse(MOUSEEVENTF_MOVE, dx, dy)
-
-
-def MoveTo(x, y):
-    """Maus auf absolute Bildschirmkoordinaten (Pixel, Hauptbildschirm) setzen."""
-    w = ctypes.windll.user32.GetSystemMetrics(0)
-    h = ctypes.windll.user32.GetSystemMetrics(1)
-    nx = int(x * 65535 / (w - 1))
-    ny = int(y * 65535 / (h - 1))
-    _send_mouse(MOUSEEVENTF_MOVE | MOUSEEVENTF_ABSOLUTE, nx, ny)
-
-
-def MouseDown(button='left'):
-    """Maustaste drücken und halten."""
-    down, _, data = _button(button)
-    _send_mouse(down, data=data)
-
-
-def MouseUp(button='left'):
-    """Maustaste loslassen."""
-    _, up, data = _button(button)
-    _send_mouse(up, data=data)
-
-
-def Click(button='left', x=None, y=None, clicks=1, delay=None, interval=0.05):
-    """Mausklick. Optional vorher zu (x, y) bewegen.
-    Click(), Click('right'), Click(x=500, y=300), Click(clicks=3)"""
-    if x is not None and y is not None:
-        MoveTo(x, y)
-    for i in range(clicks):
-        MouseDown(button)
-        time.sleep(delay1 if delay is None else delay)
-        MouseUp(button)
-        if i < clicks - 1:
-            time.sleep(interval)
-    print(f'Clicked {button}' + (f' x{clicks}' if clicks > 1 else ''))
-
-
-def DoubleClick(button='left', x=None, y=None):
-    """Doppelklick (Pause zwischen den Klicks kurz genug für Windows)."""
-    Click(button, x, y, clicks=2, delay=0.02, interval=0.05)
-
-
-def HoldClick(button='left', seconds=1.0):
-    """Maustaste für eine bestimmte Zeit gedrückt halten, z.B. HoldClick('left', 2)."""
-    Click(button, delay=seconds)
-
-
-def Drag(x1, y1, x2, y2, button='left', duration=0.2):
-    """Von (x1, y1) nach (x2, y2) ziehen."""
-    MoveTo(x1, y1)
-    MouseDown(button)
-    steps = max(int(duration / 0.01), 1)
-    for s in range(1, steps + 1):
-        MoveTo(x1 + (x2 - x1) * s / steps, y1 + (y2 - y1) * s / steps)
-        time.sleep(duration / steps)
-    MouseUp(button)
-    print(f'Dragged {button} ({x1},{y1}) -> ({x2},{y2})')
-
-
-def Scroll(notches=1, horizontal=False):
-    """Mausrad: positiv = hoch (bzw. rechts), negativ = runter (bzw. links)."""
-    flag = MOUSEEVENTF_HWHEEL if horizontal else MOUSEEVENTF_WHEEL
-    _send_mouse(flag, data=int(notches * WHEEL_DELTA))
-    print(f'Scrolled {notches}')
-
-
-def GetMousePos():
-    """Aktuelle Mausposition (x, y) - praktisch, um Koordinaten für Click/MoveTo zu finden."""
-    class POINT(ctypes.Structure):
-        _fields_ = [("x", ctypes.c_long), ("y", ctypes.c_long)]
-    p = POINT()
-    ctypes.windll.user32.GetCursorPos(ctypes.byref(p))
-    return p.x, p.y
-
-
 if __name__ == '__main__':
-    time.sleep(3)          # Zeit, um ins Zielfenster zu wechseln
-    print('Maus steht bei', GetMousePos())
+    time.sleep(3)        # Zeit, um ins Zielfenster zu wechseln
     Press('A')
+    Press('enter')
     Combo('CTRL', 'A')
-    Click()
-    Click('right')
-    DoubleClick(x=500, y=300)
-    Scroll(-3)
-    MoveRel(100, 0)
+    Hold('W', 1.5)
