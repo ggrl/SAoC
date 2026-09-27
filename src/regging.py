@@ -6,6 +6,7 @@ from PIL import ImageGrab as ig
 #local dp
 import src.targeting as targeting
 import src.dik_keys as dik_keys
+import configs.UI_config as UI_config
 
 
 

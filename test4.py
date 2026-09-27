@@ -4,6 +4,10 @@ from PIL import ImageGrab as ig
 import time
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
+import importlib
+
+resolution = '1366'
+UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
 
 
 def test_health():
