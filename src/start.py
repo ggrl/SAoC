@@ -32,9 +32,10 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
     regging.buffing(buffcount)
     for x in range(grp_size):
         y = 'F'+str(x+7)
+        dik_keys.Combo('SHIFT', '7') #go to buffbar
+        time.sleep(0.5)
         getattr(dik_keys, 'Press')(y)
         time.sleep(0.5)
-        dik_keys.Combo('SHIFT', '7') #go to buffbar
         for x in range(5):
             dik_keys.Press(x+1)
             time.sleep(3)
