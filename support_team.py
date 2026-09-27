@@ -10,7 +10,7 @@ import src.fight as fight
 import src.regging as regging
 import src.dik_keys as dik_keys
 import src.start as start
-import config_priv as conf
+import configs.config_priv as conf
 
 '''
 Fight-Bar:5
