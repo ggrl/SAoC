@@ -67,14 +67,14 @@ if __name__ == '__main__':
     if countdown():
         getReady()
     while True:
-        if targeting.targeting(pull_key, pull_weapon):
+        if targeting.targeting(pull_key):
             tryx +=1
             if tryx >= 50:
                 sys.exit("0")
             
-            elif targeting.pull_check(pull_key, pull_weapon):
+            elif targeting.pull_check(pull_key):
                 tryx = 0
-                if role(pull_weapon):
+                if role():
                     buffx = buffx + 1
                     print("Buffing in", 20-buffx, "pulls.")
                     if buffx >= 20:

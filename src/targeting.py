@@ -49,7 +49,7 @@ def get_px(bar, color):
       
 
 
-def targeting(pull_key, pull_weapon):
+def targeting(pull_key):
     screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
     current_frame = np.array(screen)
     previous_frame = current_frame
@@ -103,7 +103,7 @@ def targeting(pull_key, pull_weapon):
         
 
 
-def pull_check(pull_key, pull_weapon):    
+def pull_check(pull_key):    
     print('--------| pullcheck |---------')
     dik_keys.Press(pull_key)
     time.sleep(0.05)
@@ -112,7 +112,7 @@ def pull_check(pull_key, pull_weapon):
     if get_px('cchat', 'green') - get_px('cchat', 'red') >= 3000:
         return True
     else:
-        targeting(pull_key, pull_weapon)            
+        targeting(pull_key)            
 
 def test_targeting():        
             target = ig.grab(bbox=(UI_config.current.targetx1,UI_config.current.targety1,UI_config.current.targetx2,UI_config.current.targety2))
