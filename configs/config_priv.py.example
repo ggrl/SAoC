@@ -1,5 +1,3 @@
-import src.fight as fight
-
 resolution = '1366VM'
 pull_weapon = 'F1'
 sit_key = 'N'
@@ -9,15 +7,8 @@ mana = True #need mana?
 role = 'healer_ae_team'
 buffcount = 3  #max: 9 buffs
 grp_size = 2
-
-resolution = '1920'
-pull_weapon = 'F1'
-sit_key = 'N'
-pull_key = '6'
-endu_reg = True
-mana_reg = True
-role = fight.thane_ae_team
-buffcount = 3  #max: 9 buffs
+endu_reg = endu
+mana_reg = mana
 
 heal_IP = "192.168.0.42"
 team = {"heal": heal_IP}
