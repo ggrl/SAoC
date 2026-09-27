@@ -119,6 +119,8 @@ def healer_ae_team(stop_event):
         time.sleep(castdelay)
         for x in range(3):
             print("- GRP-Heal -")
+            dik_keys.Press('F7')
+            time.sleep(.5)
             dik_keys.Press('5')
             time.sleep(castdelay)
             dik_keys.Press('5')
@@ -140,7 +142,7 @@ def thane_ae_team(pull_weapon):
         dik_keys.Press('2')
         time.sleep(.5)
         x = 0
-        y = 10
+        y = 5
         while True:
             if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
                 print('fight finished')

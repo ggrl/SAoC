@@ -41,7 +41,7 @@ buffx = 0
 salx = 0
 tryx = 0
 pullx = 0
-UI_config.current = importlib.import_module(f"UI_config_{resolution}")
+UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
 
 mouse = Controller()
 
@@ -70,20 +70,18 @@ def getReady():
 
 
 def send_forget(command, target):
-    IP = team[target]
     
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect((IP, 5000))
+    client.connect((target, 5000))
 
     message = command
     client.sendall(message.encode())
     client.close()
 
 def send_wait(command, target):
-    IP = team[target]
 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client.connect((IP, 5000))
+    client.connect((target, 5000))
 
     message = command
     client.sendall(message.encode())
