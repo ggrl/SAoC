@@ -101,12 +101,12 @@ if __name__ == '__main__':
     if countdown():
         getReady()
     while True:
-        if targeting.targeting(pull_key, pull_weapon):
+        if targeting.targeting(pull_key):
             tryx +=1
             if tryx >= 50:
                 sys.exit("0")
             
-            elif targeting.pull_check(pull_key, pull_weapon):
+            elif targeting.pull_check(pull_key):
                 tryx = 0
                 for x in team:
                     send_forget('fight', team[x])

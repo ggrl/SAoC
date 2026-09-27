@@ -10,6 +10,7 @@ import src.fight as fight
 import src.regging as regging
 import src.dik_keys as dik_keys
 import src.start as start
+import config_priv as conf
 
 '''
 Fight-Bar:5
@@ -19,15 +20,15 @@ Utility-Bar: 7
 
 # ------ Configuration ------#
 
-resolution = '1366VM'
-pull_weapon = 'F1'
-sit_key = 'N'
-pull_key = '3'
-endu = False #need endu?
-mana = True #need mana?
-role = 'healer_ae_team'
-buffcount = 3  #max: 9 buffs
-grp_size = 2
+resolution = conf.resolution
+pull_weapon = conf.pull_weapon
+sit_key = conf.sit_key
+pull_key = conf.pull_key
+endu = conf.endu
+mana = conf.mana
+role = conf.role
+buffcount = conf.buffcount 
+grp_size = conf.grp_size
 
 #-----------------------------#
 

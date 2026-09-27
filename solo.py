@@ -74,7 +74,7 @@ if __name__ == '__main__':
             
             elif targeting.pull_check(pull_key):
                 tryx = 0
-                if role():
+                if getattr(fight, conf.role)():
                     buffx = buffx + 1
                     print("Buffing in", 20-buffx, "pulls.")
                     if buffx >= 20:
