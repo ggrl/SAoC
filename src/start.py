@@ -18,8 +18,15 @@ def SM_bomb_team(stop_event):
     print('--------| Startup |---------')
 
 # 3: AE-Stun 0: /assist puller 5: Grp-heal
-def healer_ae_team(grp_size, stop_event):
+def healer_ae_team(grp_size, stop_event=None):
     print('--------| Startup |---------')
+    for x in range(grp_size):
+        y = 'F'+str(x+7)
+        getattr(dik_keys, 'Press')(y)
+        dik_keys.Combo('SHIFT', '7') #go to buffbar
+        for x in range(5):
+            dik_keys.Press(x+1)
+            time.sleep(.5)
 
         
 

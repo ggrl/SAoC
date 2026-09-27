@@ -36,7 +36,7 @@ functions = {
     "regg": (regging.regging,(sit_key, endu, mana)),
     "buff": (regging.buffing,(buffcount,)),
     "wait": (regging.wait,()),
-    "start": (start_up,())
+    "start": (getattr(fight, role),(grp_size,))
 }
 
 
@@ -85,7 +85,7 @@ while True:
 
         if command in functions:
 
-            if command =='regg':
+            if command =='regg' or command =='start':
 
                 # stop current worker
                 if current_thread and current_thread.is_alive():
@@ -93,7 +93,7 @@ while True:
                         current_thread.join()
                 
                 # regging execute synchonous
-                regging.regging(sit_key, endu, mana)
+                functions[command][0](*functions[command][1])
                 
                 # send client
                 conn.sendall(b"DONE")
