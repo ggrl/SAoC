@@ -37,7 +37,7 @@ functions = {
 }
 
 
-
+UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
 current_thread = None
 stop_event = None
 
