@@ -7,10 +7,10 @@ import importlib
 #local dep
 
 import configs.UI_config as UI_config
-import targeting
-import fight
-import dik_keys
-import regging
+import src.targeting as targeting
+import src.fight as fight
+import src.dik_keys as dik_keys
+import src.regging as regging
 
 '''
 Fight-Bar:5

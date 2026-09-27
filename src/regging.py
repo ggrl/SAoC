@@ -4,8 +4,8 @@ import numpy as np
 from PIL import ImageGrab as ig
 
 #local dp
-import targeting
-import dik_keys
+import src.targeting as targeting
+import src.dik_keys as dik_keys
 
 
 

@@ -5,8 +5,8 @@ import time
 
 #local dp
 import configs.UI_config as UI_config
-import dik_keys
-import targeting
+import src.dik_keys as dik_keys
+import src.targeting as targeting
 
 #------------------------
 # - hunter (solo hunter)
@@ -83,7 +83,7 @@ def thane(pull_weapon):
             x = x+1 
             print('Attackloop', x, '/', y)
 
-# 3: bomb
+# 3: bomb 0: /assist puller 4: quickcast 5: str/con-debuff
 def SM_bomb_team(stop_event):
     castdelay = 3
     print("|--- Start Fight ---|")
@@ -91,11 +91,17 @@ def SM_bomb_team(stop_event):
     time.sleep(5)
     while not stop_event.is_set():
         print("- BOMB -")
+        dik_keys.Press('0')
+        time.sleep(.5)
         dik_keys.Press('3')
+        time.sleep(.5)
+        dik_keys.Press('5')
         time.sleep(castdelay)
         dik_keys.Press('3')
         time.sleep(castdelay)
         dik_keys.Press('3')
+        time.sleep(castdelay)
+
 
 # 3: AE-Stun 0: /assist puller 5: Grp-heal
 def healer_ae_team(stop_event):

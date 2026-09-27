@@ -8,10 +8,10 @@ import socket
 #local dep
 
 import configs.UI_config as UI_config
-import targeting
-import fight
-import dik_keys
-import regging
+import src.targeting as targeting
+import src.fight as fight
+import src.dik_keys as dik_keys
+import src.regging as regging
 
 '''
 Fight-Bar:5
@@ -31,8 +31,7 @@ role = fight.thane_ae_team
 buffcount = 5  #max: 9 buffs
 pullcount = 3 #pulls until reg
 heal_IP = "192.168.0.42"
-bomb_IP = "192.168.0.0"
-team = {"heal": heal_IP, "bomb": bomb_IP}
+team = {"heal": heal_IP}
 
 #--------------------------#
 
@@ -108,25 +107,24 @@ if __name__ == '__main__':
             
             elif targeting.pull_check(pull_key, pull_weapon):
                 tryx = 0
-                send_forget('fight', 'bomb')
-                send_forget('fight', 'heal')
+                for x in team:
+                    send_forget('fight', team[x])
                 if role(pull_weapon):
                     buffx = buffx + 1
                     pullx = pullx + 1
-                    send_forget('wait', 'bomb')
-                    send_forget('wait', 'heal')
+                    for x in team:
+                        send_forget('wait', team[x])
                     print("Buffing in", 20-buffx, "pulls.")
                     if buffx >= 20:
                         buffx = 0
-                        send_forget('buff', 'bomb')
-                        send_forget('buff', 'heal')
+                        for x in team:
+                            send_forget('buff', team[x])
                         if regging.buffing(buffcount):
                             regging.regging(sit_key, mana_reg, endu_reg)
                     elif pullx >= pullcount:
                         pullx = 0
                         dik_keys.Press(sit_key)
                         print("|------- TEAM regging -------|")
-                        print("|-- Bomb: response: ", send_wait('regg', 'bomb'), " --|")
-                        send_wait('regg', 'heal')
-                        print("|-- Heal: response: ", send_wait('regg', 'heal'), " --|")
+                        for x in team:
+                            print(f"|-- {team[x]}: response: ", send_wait('regg', team[x]), " --|")
                         regging.regging(sit_key, mana_reg, endu_reg)            

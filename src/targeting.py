@@ -8,7 +8,7 @@ from pynput import keyboard
 from pynput.mouse import Button, Controller
 from pynput import mouse
 import configs.UI_config as UI_config
-import dik_keys
+import src.dik_keys as dik_keys
 
 mouse = Controller()
 
@@ -52,7 +52,7 @@ def targeting(pull_key, pull_weapon):
     current_frame = np.array(screen)
     previous_frame = current_frame
     print(pull_key)
-    whiteten = cv2.imread('mob.jpg',0)
+    whiteten = cv2.imread('src\mob.jpg',0)
 
     targetingx = 1
 

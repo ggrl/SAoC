@@ -5,9 +5,9 @@ import time
 
 #local dp
 import configs.UI_config as UI_config
-import fight
-import regging
-import dik_keys
+import src.fight as fight
+import src.regging as regging
+import src.dik_keys as dik_keys
 
 '''
 Fight-Bar:5
@@ -17,7 +17,7 @@ Utility-Bar: 7
 
 # --- Configuration ---#
 
-resolution = '1920'
+resolution = '1366VM'
 pull_weapon = 'F1'
 sit_key = 'N'
 pull_key = '3'
