@@ -145,6 +145,7 @@ def thane_ae_team(pull_weapon):
         y = 5
         while True:
             if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
+                dik_keys.Click(button='left', x=UI_config.scrnx1+UI_config.scrnw//2, y=UI_config.scrny1+UI_config.scrnh//2)
                 print('fight finished')
                 return True  
             else:

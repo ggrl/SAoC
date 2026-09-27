@@ -48,8 +48,9 @@ def buffing(count, stop_event=None):
     return True  
 
 def wait(stop_event):
+    print('--------| buffing start |---------')
     while not stop_event.is_set():
-        time.sleep(2)
+        time.sleep(3)
 
 
 
