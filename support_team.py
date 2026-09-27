@@ -86,7 +86,7 @@ while True:
                         current_thread.join()
                 
                 # regging execute synchonous
-                regging.regging(sit_key)
+                regging.regging(sit_key, endu, mana)
                 
                 # send client
                 conn.sendall(b"DONE")
