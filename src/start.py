@@ -35,7 +35,8 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
     for x in range(grp_size):
         #y = 'F'+str(x+7)
         #getattr(dik_keys, 'Press')(y)
-        dik_keys.Press('F'+str(x+7))
+        #dik_keys.Press('F'+str(x+7))
+        dik_keys.Press('F7')
         time.sleep(0.5)
         for x in range(5):
             dik_keys.Press(x+1)
