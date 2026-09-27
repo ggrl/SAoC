@@ -12,6 +12,7 @@ import src.targeting as targeting
 import src.fight as fight
 import src.dik_keys as dik_keys
 import src.regging as regging
+import configs.config_priv as conf
 
 '''
 Fight-Bar:5
@@ -21,18 +22,18 @@ Utility-Bar: 7
 
 # ----- Configuration -----#
 
-resolution = '1920'
-pull_weapon = 'F1'
-sit_key = 'N'
-pull_key = '6'
-endu_reg = True
-mana_reg = True
-role = fight.thane_ae_team
-buffcount = 3  #max: 9 buffs
-pullcount = 3 #pulls until reg
-heal_IP = "192.168.0.42"
-team = {"heal": heal_IP}
-grp_size = 2
+resolution = conf.resolution
+pull_weapon = conf.pull_weapon
+sit_key = conf.sit_key
+pull_key = conf.pull_key
+endu_reg = conf.endu_reg
+mana_reg = conf.mana_reg
+role = conf.role
+buffcount = conf.buffcount
+pullcount = conf.pullcount
+heal_IP = conf.heal_IP
+team = conf.team
+grp_size = conf.grp_size
 
 #--------------------------#
 

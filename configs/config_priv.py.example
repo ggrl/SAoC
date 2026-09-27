@@ -1,0 +1,24 @@
+import src.fight as fight
+
+resolution = '1366VM'
+pull_weapon = 'F1'
+sit_key = 'N'
+pull_key = '3'
+endu = False #need endu?
+mana = True #need mana?
+role = 'healer_ae_team'
+buffcount = 3  #max: 9 buffs
+grp_size = 2
+
+resolution = '1920'
+pull_weapon = 'F1'
+sit_key = 'N'
+pull_key = '6'
+endu_reg = True
+mana_reg = True
+role = fight.thane_ae_team
+buffcount = 3  #max: 9 buffs
+
+heal_IP = "192.168.0.42"
+team = {"heal": heal_IP}
+grp_size = 2

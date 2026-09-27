@@ -11,6 +11,7 @@ import src.targeting as targeting
 import src.fight as fight
 import src.dik_keys as dik_keys
 import src.regging as regging
+import configs.config_priv as conf
 
 '''
 Fight-Bar:5
@@ -20,14 +21,14 @@ Utility-Bar: 7
 
 # --- Configuration ---#
 
-resolution = '1920'
-pull_weapon = 'F1'
-sit_key = 'N'
-pull_key = '3'
-mana_reg = True
-endu_reg = True
-role = fight.thane
-buffcount = 3  #max: 9 buffs
+resolution = conf.resolution
+pull_weapon = conf.pull_weapon
+sit_key = conf.sit_key
+pull_key = conf.pull_key
+mana_reg = conf.mana_reg
+endu_reg = conf.endu_reg
+role = conf.role
+buffcount = conf.buffcount
 
 #--------------------------#
 
