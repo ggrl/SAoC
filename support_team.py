@@ -33,7 +33,7 @@ buffcount = 5  #max: 9 buffs
 functions = {
     "fight": (role,()),
     "regg": (regging.regging,(sit_key, endu, mana)),
-    "buff": (regging.buffing,(buffcount)),
+    "buff": (regging.buffing,(buffcount,)),
     "wait": (regging.wait,())
 }
 

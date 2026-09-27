@@ -38,7 +38,7 @@ def regging_lead(sitkey):
 def buffing(count, stop_event=None):
     print('--------| buffing start |---------')
     x = count
-    #go to bar 7
+    #go to bar 6
     dik_keys.Combo("SHIFT", "6")
     for i in range(0,x):
         dik_keys.Press(str(i+1))
@@ -49,7 +49,7 @@ def buffing(count, stop_event=None):
     return True  
 
 def wait(stop_event):
-    print('--------| buffing start |---------')
+    print('--------| Waiting |---------')
     while not stop_event.is_set():
         time.sleep(3)
 
