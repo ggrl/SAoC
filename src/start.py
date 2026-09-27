@@ -40,7 +40,7 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
         #dik_keys.Press('F7')
         time.sleep(4)
         for y in range(5):
-            dik_keys.Press(y+1)
+            dik_keys.Press(str(y+1))
             time.sleep(3.5)
     dik_keys.Combo('SHIFT', '5') #go to fightbar
     return True
