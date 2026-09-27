@@ -37,7 +37,7 @@ functions = {
     "regg": (regging.regging,(sit_key, endu, mana)),
     "buff": (regging.buffing,(buffcount,)),
     "wait": (regging.wait,()),
-    "start": (getattr(start, role),(grp_size,))
+    "start": (getattr(start, role),(grp_size, buffcount))
 }
 
 
