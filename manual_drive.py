@@ -1,0 +1,106 @@
+import tkinter as tk
+import time
+import sys
+import importlib
+import socket
+
+#local dep
+
+import configs.UI_config as UI_config
+import src.targeting as targeting
+import src.fight as fight
+import src.dik_keys as dik_keys
+import src.regging as regging
+import puller_team
+
+'''
+Fight-Bar:5
+Buff-Bar: 6
+Utility-Bar: 7
+'''
+
+# ----- Configuration -----#
+
+resolution = '1920'
+pull_weapon = 'F1'
+sit_key = 'N'
+pull_key = '6'
+endu_reg = True
+mana_reg = True
+role = fight.thane_ae_team
+buffcount = 3  #max: 9 buffs
+pullcount = 3 #pulls until reg
+heal_IP = "192.168.0.42"
+team = {"heal": heal_IP}
+grp_size = 2
+
+#--------------------------#
+
+def button_fight():
+    for x in team:
+        puller_team.send_forget('fight', team[x])
+
+
+def button_wait():
+    for x in team:
+        puller_team.send_forget('wait', team[x])
+
+
+def button_regg():
+    for x in team:
+        puller_team.send_wait('regg', team[x])
+    
+
+def button_Buff():
+    for x in team:
+        puller_team.send_forget('buff', team[x])
+
+
+def button_start():
+    for x in team:
+        puller_team.send_wait('start', team[x])
+
+
+#--------- GUI ---------#
+root = tk.Tk()
+root.title("manual drive")
+root.attributes("-topmost", True)
+root.resizable(False, False)
+root.overrideredirect(True)
+tk.Button(root, text="X", command=root.destroy).pack()
+
+def start_move(event):
+    root.x = event.x
+    root.y = event.y
+
+
+def move(event):
+    x = root.winfo_x() + event.x - root.x
+    y = root.winfo_y() + event.y - root.y
+    root.geometry(f"+{x}+{y}")
+
+
+dragbar = tk.Frame(root, height=15)
+dragbar.pack(fill="x")
+
+dragbar.bind("<Button-1>", start_move)
+dragbar.bind("<B1-Motion>", move)
+
+
+buttons = [
+    ("FIGHT", button_fight),
+    ("WAIT", button_wait),
+    ("REGG", button_regg),
+    ("BUFF", button_Buff),
+    ("START", button_start),
+]
+
+for text, function in buttons:
+    tk.Button(
+        root,
+        text=text,
+        command=function,
+        width=20
+    ).pack(pady=5)
+
+root.mainloop()

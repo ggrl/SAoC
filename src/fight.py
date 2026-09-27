@@ -14,7 +14,7 @@ import src.targeting as targeting
 
 
 #Hunter: 3: Standart-Shot, 3: Power-Shot, 2: Speer-Style(anytime) 3: Speer-Style(Follow-up,cond.)  F3: Bogen, F2: Speer
-def hunter(pull_weapon):
+def hunter():
     print('--------| FIGHT rotation |---------')
     bowdelay = 4.5
     meleedelay = 3.5
@@ -35,7 +35,7 @@ def hunter(pull_weapon):
     while True:
         if targeting.get_px('targetbar', 'red') > 300000:
             #equip bow
-            dik_keys.Press(pull_weapon)    
+            dik_keys.Press('F3')    
             print('fight beendet')
             return True  
         else:
@@ -47,7 +47,7 @@ def hunter(pull_weapon):
             print(x)
 
 #Thane: 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
-def thane(pull_weapon):
+def thane():
     print('--------| FIGHT rotation |---------')
     castdelay = 3
     meleedelay = 3.5
@@ -67,7 +67,7 @@ def thane(pull_weapon):
         if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:
             dik_keys.Press('2')
             time.sleep(meleedelay)
-            dik_keys.Press(pull_weapon)    
+            dik_keys.Press('F1')    
             print('fight finished')
             return True  
         else:
@@ -129,7 +129,7 @@ def healer_ae_team(stop_event):
         
 
 #Thane: 6: Mjollnir-AE 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
-def thane_ae_team(pull_weapon):
+def thane_ae_team(stop_event=None):
         print('--------| FIGHT rotation |---------')
         castdelay = 3
         meleedelay = 3.5
@@ -144,7 +144,7 @@ def thane_ae_team(pull_weapon):
         time.sleep(.5)
         x = 0
         y = 5
-        while True:
+        while not stop_event.is_set():
             if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
                 dik_keys.Click(button='left', x=UI_config.scrnx1+UI_config.scrnw//2, y=UI_config.scrny1+UI_config.scrnh//2)
                 print('fight finished')

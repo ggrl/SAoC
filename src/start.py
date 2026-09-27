@@ -33,12 +33,8 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
     dik_keys.Combo('SHIFT', '7') #go to buffbar
     time.sleep(0.5)
     for x in range(grp_size):
-        #y = 'F'+str(x+7)
-        #getattr(dik_keys, 'Press')(y)
-        #dik_keys.Press('F'+str(x+7))
         dik_keys.Combo('SHIFT', 'F'+ str(x+1))
-        #dik_keys.Press('F7')
-        time.sleep(4)
+        time.sleep(.5)
         for y in range(5):
             dik_keys.Press(str(y+1))
             time.sleep(3.5)
@@ -50,4 +46,15 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
 def thane_ae_team(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     regging.buffing(buffcount)
-    return True        
+    return True 
+
+
+
+
+
+def stick(stop_event=None):
+    print('--------| Stick |---------')
+    dik_keys.Combo('SHIFT', 'F1')
+    time.sleep(.5)
+    dik_keys.Press('F')
+    time.sleep(.5) 
