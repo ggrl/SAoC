@@ -32,6 +32,7 @@ buffcount = 5  #max: 9 buffs
 pullcount = 3 #pulls until reg
 heal_IP = "192.168.0.42"
 team = {"heal": heal_IP}
+grp_size = 3
 
 #--------------------------#
 

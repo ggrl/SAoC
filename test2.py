@@ -1,11 +1,13 @@
 import test3
+import src.dik_keys as dik_keys
 
 
+x = 'out1'
+functions = {"a": test3}
 
-x = test3.out
-functions = {"fight": x}
 
-functions['fight']()
-   
- 
+#etattr(functions['a'], x)()
+z = 7 + 1
+y = 'F'+str(z)   
+getattr(dik_keys, 'Press')(y)
 

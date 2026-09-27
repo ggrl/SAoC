@@ -16,7 +16,7 @@ Buff-Bar: 6
 Utility-Bar: 7
 '''
 
-# --- Configuration ---#
+# ------ Configuration ------#
 
 resolution = '1366VM'
 pull_weapon = 'F1'
@@ -24,17 +24,19 @@ sit_key = 'N'
 pull_key = '3'
 endu = False #need endu?
 mana = True #need mana?
-role = fight.healer_ae_team
+role = 'healer_ae_team'
 buffcount = 5  #max: 9 buffs
+grp_size = 3
 
-#--------------------------#
+#-----------------------------#
 
 
 functions = {
-    "fight": (role,()),
+    "fight": (getattr(fight, role),()),
     "regg": (regging.regging,(sit_key, endu, mana)),
     "buff": (regging.buffing,(buffcount,)),
-    "wait": (regging.wait,())
+    "wait": (regging.wait,()),
+    "start": (start_up,())
 }
 
 
@@ -42,6 +44,10 @@ UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
 current_thread = None
 stop_event = None
 
+
+def start_up():
+    print("|--- Start Up ---|")
+    
 
 def start_worker(command):
     global current_thread, stop_event

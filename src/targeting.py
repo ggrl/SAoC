@@ -7,6 +7,8 @@ from pynput.keyboard import Key, Listener
 from pynput import keyboard
 from pynput.mouse import Button, Controller
 from pynput import mouse
+
+#local dp
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 
