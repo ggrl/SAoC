@@ -32,7 +32,7 @@ def button_regg():
         puller_team.send_wait('regg', team[x])
     
 
-def button_Buff():
+def button_buff():
     for x in team:
         puller_team.send_forget('buff', team[x])
 
@@ -40,6 +40,14 @@ def button_Buff():
 def button_start():
     for x in team:
         puller_team.send_wait('start', team[x])
+
+def button_stick():
+    for x in team:
+        puller_team.send_forget('stick', team[x])
+
+def button_spread():
+    for x in team:
+        puller_team.send_forget('spread', team[x])        
 
 
 #--------- GUI ---------#
@@ -72,7 +80,9 @@ buttons = [
     ("FIGHT", button_fight),
     ("WAIT", button_wait),
     ("REGG", button_regg),
-    ("BUFF", button_Buff),
+    ("BUFF", button_buff),
+    ("STICK", button_stick),
+    ("SPREAD", button_spread)
     ("START", button_start),
 ]
 
