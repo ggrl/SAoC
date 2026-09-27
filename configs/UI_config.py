@@ -1,9 +1,9 @@
 current = None
 
 scrnx1 = 80
-scrny1 = 40
+scrny1 = 80
 scrnx2 = 1800
-scrny2 = 650
+scrny2 = 600
 scrnw = scrnx2 - scrnx1
 scrnh = scrny2 - scrny1
 
@@ -15,16 +15,12 @@ targetw = targetx2 - targetx1
 targeth = targety2 - targety1
 
 cchatx1 = 11
-cchaty1 = 569
+cchaty1 = 882
 cchatx2 = 360
-cchaty2 = 590
+cchaty2 = 900
 cchatw = cchatx2 - cchatx1
 cchath = cchaty2 - cchaty1
 
-barx1 = 30
-barx2 = 950
-barh = 6
-barw = barx2 - barx1
 healthbarx1 = 4
 healthbary1 = 23
 healthbarx2 = 255
@@ -52,4 +48,9 @@ targetbarx2 = 255
 targetbary2 = 19
 targetbarw = targetbarx2 - targetbarx1
 targetbarh = targetbary2 - targetbary1
+
+healthbarthreshold = 350000
+endubarthreshold = 75000
+manabarthreshold = 100000
+targetbarthreshold = 450000
 

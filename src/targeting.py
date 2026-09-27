@@ -97,7 +97,7 @@ def targeting(pull_key, pull_weapon):
         time.sleep(.2)
 
         
-        if get_px('targetbar', 'blue') > 450000:
+        if get_px('targetbar', 'blue') > UI_config.current.targetbarthreshold:
                print('New Target.')
                return True
            

@@ -1,20 +1,20 @@
 scrnx1 = 40
 scrny1 = 40
-scrnx2 = 1300
+scrnx2 = 1355
 scrny2 = 520
 scrnw = scrnx2 - scrnx1
 scrnh = scrny2 - scrny1
 
-targetx1 = 30
-targety1 = 1
-targetx2 = 299
-targety2 = 13
+targetx1 = 4
+targety1 = 3
+targetx2 = 255
+targety2 = 19
 targetw = targetx2 - targetx1
 targeth = targety2 - targety1
 
 cchatx1 = 11
-cchaty1 = 570
-cchatx2 = 340
+cchaty1 = 569
+cchatx2 = 360
 cchaty2 = 590
 cchatw = cchatx2 - cchatx1
 cchath = cchaty2 - cchaty1
@@ -51,3 +51,7 @@ targetbary2 = 19
 targetbarw = targetbarx2 - targetbarx1
 targetbarh = targetbary2 - targetbary1
 
+healthbarthreshold = 350000
+endubarthreshold = 75000
+manabarthreshold = 100000
+targetbarthreshold = 450000

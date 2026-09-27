@@ -19,10 +19,6 @@ cchaty2 = 900
 cchatw = cchatx2 - cchatx1
 cchath = cchaty2 - cchaty1
 
-barx1 = 30
-barx2 = 950
-barh = 6
-barw = barx2 - barx1
 healthbarx1 = 4
 healthbary1 = 23
 healthbarx2 = 255
@@ -50,4 +46,9 @@ targetbarx2 = 255
 targetbary2 = 19
 targetbarw = targetbarx2 - targetbarx1
 targetbarh = targetbary2 - targetbary1
+
+healthbarthreshold = 350000
+endubarthreshold = 75000
+manabarthreshold = 100000
+targetbarthreshold = 450000
 
