@@ -36,7 +36,7 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
         dik_keys.Combo('SHIFT', '7') #go to buffbar
         for x in range(5):
             dik_keys.Press(x+1)
-            time.sleep(.5)
+            time.sleep(3)
     return True
         
 

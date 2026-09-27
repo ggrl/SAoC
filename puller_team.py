@@ -32,7 +32,7 @@ buffcount = 3  #max: 9 buffs
 pullcount = 3 #pulls until reg
 heal_IP = "192.168.0.42"
 team = {"heal": heal_IP}
-grp_size = 3
+grp_size = 2
 
 #--------------------------#
 
@@ -61,7 +61,7 @@ def getReady():
     time.sleep(0.5)
     regging.buffing(buffcount)
     for x in team:
-        send_forget('start', team[x])
+        send_wait('start', team[x])
     dik_keys.Combo('SHIFT', '5') #go to fight-bar
     time.sleep(.5)
     dik_keys.Press(pull_weapon) #equip pull-weapon

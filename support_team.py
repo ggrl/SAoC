@@ -27,7 +27,7 @@ endu = False #need endu?
 mana = True #need mana?
 role = 'healer_ae_team'
 buffcount = 3  #max: 9 buffs
-grp_size = 3
+grp_size = 2
 
 #-----------------------------#
 
