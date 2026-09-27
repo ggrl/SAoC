@@ -133,18 +133,38 @@ def thane_ae_team(stop_event=None):
         print('--------| FIGHT rotation |---------')
         castdelay = 3
         meleedelay = 3.5
-        time.sleep(.5)
-        dik_keys.Press('4')
-        time.sleep(.5)
-        for x in range(6):
-            dik_keys.Press('6')
-            time.sleep(castdelay)
-        time.sleep(.5)
-        dik_keys.Press('2')
-        time.sleep(.5)
-        x = 0
-        y = 5
-        while not stop_event.is_set():
+        
+        if stop_event is not None:
+            dik_keys.Press('0')
+            time.sleep(.5)
+            dik_keys.Press('4')
+            time.sleep(.5)
+            for x in range(6):
+                dik_keys.Press('6')
+                time.sleep(castdelay)
+            while not stop_event.is_set():
+                dik_keys.Press('5')
+                time.sleep(.5)
+                dik_keys.Press('1')
+                time.sleep(.5)
+                dik_keys.Press('2')
+                time.sleep(meleedelay)
+                dik_keys.Press('0')
+                time.sleep(.5)
+                dik_keys.Press('4')
+                time.sleep(.5)
+        else:
+            time.sleep(.5)
+            dik_keys.Press('4')
+            time.sleep(.5)
+            for x in range(6):
+                dik_keys.Press('6')
+                time.sleep(castdelay)
+            time.sleep(.5)
+            dik_keys.Press('2')
+            time.sleep(.5)
+            x = 0
+            y = 5    
             if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
                 dik_keys.Click(button='left', x=UI_config.scrnx1+UI_config.scrnw//2, y=UI_config.scrny1+UI_config.scrnh//2)
                 print('fight finished')
