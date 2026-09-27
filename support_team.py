@@ -39,7 +39,8 @@ functions = {
     "buff": (regging.buffing,(buffcount,)),
     "wait": (regging.wait,()),
     "start": (getattr(start, role),(grp_size, buffcount)),
-    "stick": (start.stick,())
+    "stick": (start.stick,()),
+    "spread": (start.spread,())
 }
 
 

@@ -1,4 +1,5 @@
 import time
+import random
 
 #local dp
 import configs.UI_config as UI_config
@@ -49,12 +50,18 @@ def thane_ae_team(grp_size, buffcount, stop_event=None):
     return True 
 
 
-
-
-
 def stick(stop_event=None):
-    print('--------| Stick |---------')
+    print('--------| Sticking |---------')
     dik_keys.Combo('SHIFT', 'F1')
     time.sleep(.5)
     dik_keys.Press('F')
-    time.sleep(.5) 
+    time.sleep(.5)
+
+
+def spread(stop_event=None):
+    print('--------| Spreading |---------')
+    dik_keys.Press('W', 1)
+    time.sleep(.5)
+    key = random.choice(['A','S','D'])
+    delay = random.choice([0.5,0.7,1,1.2,1.5,1.7])
+    dik_keys.Press(key,delay)
