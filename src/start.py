@@ -37,8 +37,8 @@ def healer_ae_team(grp_size, buffcount, stop_event=None):
         #getattr(dik_keys, 'Press')(y)
         #dik_keys.Press('F'+str(x+7))
         dik_keys.Combo('SHIFT', 'F'+ str(x+1))
-        dik_keys.Press('F7')
-        time.sleep(0.5)
+        #dik_keys.Press('F7')
+        time.sleep(4)
         for x in range(5):
             dik_keys.Press(x+1)
             time.sleep(3.5)
