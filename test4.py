@@ -5,6 +5,11 @@ import time
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import importlib
+from pynput.mouse import Button, Controller
+from pynput import mouse
+
+
+mouse = Controller()
 
 resolution = '1366'
 UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
@@ -73,8 +78,31 @@ def test_bars():
         print("Blaue Pixel:", tbbluepx)
 
 
+def test_UI():
+       print("Healthbar-position:", UI_config.current.healthbarx1, UI_config.current.healthbary1, UI_config.current.healthbarx2, UI_config.current.healthbary2)
+       mouse.position = UI_config.current.healthbarx1, UI_config.current.healthbary1
+       time.sleep(1)
+       mouse.position = UI_config.current.healthbarx2, UI_config.current.healthbary2
+       time.sleep(1)
+       print("Endubar-position:", UI_config.current.endubarx1, UI_config.current.endubary1, UI_config.current.endubarx2, UI_config.current.endubary2)
+       mouse.position = UI_config.current.endubarx1, UI_config.current.endubary1 
+       time.sleep(1)
+       mouse.position = UI_config.current.endubarx2, UI_config.current.endubary2
+       time.sleep(1)
+       print("Manabar-position:", UI_config.current.manabarx1, UI_config.current.manabary1, UI_config.current.manabarx2, UI_config.current.manabary2)
+       mouse.position = UI_config.current.manabarx1, UI_config.current.manabary1
+       time.sleep(1)
+       mouse.position = UI_config.current.manabarx2, UI_config.current.manabary2
+       time.sleep(1)
+       print("Targetbar-position:", UI_config.current.targetbarx1, UI_config.current.targetbary1, UI_config.current.targetbarx2, UI_config.current.targetbary2)
+       mouse.position = UI_config.current.targetbarx1, UI_config.current.targetbary1
+       time.sleep(1)
+       mouse.position = UI_config.current.targetbarx2, UI_config.current.targetbary2
+       time.sleep(1)
+
 while True:
         test_bars()
+        test_UI()
         time.sleep(4)
 
 
