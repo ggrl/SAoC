@@ -5,7 +5,7 @@ import ctypes
 import time
 import difflib
 
-delay1 = 0.05  # Standard-Haltedauer in Sekunden
+delay1 = 0.1  # Standard-Haltedauer in Sekunden
 
 # ---------------------------------------------------------------- ctypes-Strukturen
 SendInput = ctypes.windll.user32.SendInput
