@@ -30,10 +30,10 @@ def SM_bomb_team(grp_size, buffcount, stop_event=None):
 def healer_ae_team(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     regging.buffing(buffcount)
+    dik_keys.Combo('SHIFT', '7') #go to buffbar
+    time.sleep(0.5)
     for x in range(grp_size):
         y = 'F'+str(x+7)
-        dik_keys.Combo('SHIFT', '7') #go to buffbar
-        time.sleep(0.5)
         getattr(dik_keys, 'Press')(y)
         time.sleep(0.5)
         for x in range(5):
