@@ -60,8 +60,8 @@ def stick(stop_event=None):
 
 def spread(stop_event=None):
     print('--------| Spreading |---------')
-    dik_keys.Press('W', 1)
+    dik_keys.Press('S', 0.5)
     time.sleep(.5)
     key = random.choice(['A','S','D'])
-    delay = random.choice([0.5,0.7,1,1.2,1.5,1.7])
+    delay = random.choice([0.3,0.5,0.7,1,1.2,1.5])
     dik_keys.Press(key,delay)

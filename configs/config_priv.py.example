@@ -6,6 +6,7 @@ endu = False #need endu?
 mana = True #need mana?
 role = 'healer_ae_team'
 buffcount = 3  #max: 9 buffs
+pullcount = 3 #pulls until reg
 grp_size = 2
 endu_reg = endu
 mana_reg = mana

@@ -82,7 +82,7 @@ buttons = [
     ("REGG", button_regg),
     ("BUFF", button_buff),
     ("STICK", button_stick),
-    ("SPREAD", button_spread)
+    ("SPREAD", button_spread),
     ("START", button_start),
 ]
 
