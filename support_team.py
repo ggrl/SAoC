@@ -9,6 +9,7 @@ import configs.UI_config as UI_config
 import src.fight as fight
 import src.regging as regging
 import src.dik_keys as dik_keys
+import src.start as start
 
 '''
 Fight-Bar:5
@@ -36,7 +37,7 @@ functions = {
     "regg": (regging.regging,(sit_key, endu, mana)),
     "buff": (regging.buffing,(buffcount,)),
     "wait": (regging.wait,()),
-    "start": (getattr(fight, role),(grp_size,))
+    "start": (getattr(start, role),(grp_size,))
 }
 
 
