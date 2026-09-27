@@ -1,16 +1,6 @@
 import tkinter as tk
-import time
-import sys
-import importlib
-import socket
 
 #local dep
-
-import configs.UI_config as UI_config
-import src.targeting as targeting
-import src.fight as fight
-import src.dik_keys as dik_keys
-import src.regging as regging
 import puller_team
 
 '''
@@ -21,15 +11,6 @@ Utility-Bar: 7
 
 # ----- Configuration -----#
 
-resolution = '1920'
-pull_weapon = 'F1'
-sit_key = 'N'
-pull_key = '6'
-endu_reg = True
-mana_reg = True
-role = fight.thane_ae_team
-buffcount = 3  #max: 9 buffs
-pullcount = 3 #pulls until reg
 heal_IP = "192.168.0.42"
 team = {"heal": heal_IP}
 grp_size = 2
