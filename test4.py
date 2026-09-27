@@ -3,7 +3,7 @@ import cv2
 from PIL import ImageGrab as ig
 import time
 import configs.UI_config as UI_config
-import dik_keys
+import src.dik_keys as dik_keys
 
 
 def test_health():
