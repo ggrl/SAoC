@@ -1,6 +1,3 @@
-import numpy as np
-import cv2
-from PIL import ImageGrab as ig
 import time
 
 #local dp
@@ -85,27 +82,29 @@ def thane(pull_weapon):
 
 # 3: bomb 0: /assist puller 4: quickcast 5: str/con-debuff
 def SM_bomb_team(stop_event):
-    castdelay = 3
+    castdelay = 2.5
     print("|--- Start Fight ---|")
     #wait for pull
-    time.sleep(5)
+    stop_event.wait(6)
     while not stop_event.is_set():
         print("- BOMB -")
         dik_keys.Press('0')
         time.sleep(.5)
-        dik_keys.Press('3')
-        time.sleep(.5)
         dik_keys.Press('5')
-        time.sleep(castdelay)
+        for x in range(5):
+            if stop_event.is_set():
+                return
+            dik_keys.Press('3')
+            time.sleep(castdelay)
+        dik_keys.Press('4')
+        time.sleep(.5)
         dik_keys.Press('3')
-        time.sleep(castdelay)
-        dik_keys.Press('3')
-        time.sleep(castdelay)
+        time.sleep(1)      
 
 
 # 3: AE-Stun 0: /assist puller 5: Grp-heal
 def healer_ae_team(stop_event):
-    castdelay = 3
+    castdelay = 2.5
     print("|--- Start Fight ---|")
     #wait for pull
     stop_event.wait(6)
