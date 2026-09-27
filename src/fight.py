@@ -108,7 +108,7 @@ def healer_ae_team(stop_event):
     castdelay = 3
     print("|--- Start Fight ---|")
     #wait for pull
-    time.sleep(6)
+    stop_event.wait(6)
     while not stop_event.is_set():
         dik_keys.Press('0')
         time.sleep(.5)
@@ -116,8 +116,10 @@ def healer_ae_team(stop_event):
         dik_keys.Press('3')
         time.sleep(castdelay)
         dik_keys.Press('3')
-        time.sleep(castdelay)
+        time.sleep(.5)
         for x in range(3):
+            if stop_event.is_set():
+                return
             print("- GRP-Heal -")
             dik_keys.Press('F7')
             time.sleep(.5)
