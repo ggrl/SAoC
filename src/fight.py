@@ -4,6 +4,7 @@ import time
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import src.targeting as targeting
+import configs.config_priv as conf
 
 #------------------------
 # - hunter (solo hunter)
@@ -117,16 +118,12 @@ def healer_ae_team(stop_event):
         time.sleep(castdelay)
         dik_keys.Press('3')
         time.sleep(.5)
-        for x in range(5):
+        for x in range(6):
             if stop_event.is_set():
                 return
-            print("- GRP-Heal -")
-            dik_keys.Press('F7')
-            time.sleep(.5)
-            dik_keys.Press('5')
+            print("- Healing -")
+            healing()
             time.sleep(castdelay)
-            dik_keys.Press('5')
-            time.sleep(6)
         
 
 #Thane: 6: Mjollnir-AE 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
@@ -187,4 +184,21 @@ def thane_ae_team(stop_event=None):
                 x = x+1 
                 print('Attackloop', x, '/', y)
         
-        
+def healing():
+    grp = targeting.grp(conf.grp_size)
+    under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
+    if under_50:
+        index = under_50[grp.index(max(grp[i] for i in under_50))]
+        dik_keys.PoC(getattr(conf, 'targetgrp'+str(index+1)))
+        time.sleep(.2)
+        dik_keys.PoC(conf.singleheal)
+
+    elif sum(x > conf.hhelp100 for x in grp) >= 3:
+        time.sleep(.2)
+        dik_keys.PoC(conf.grpheal)
+
+    else:
+        index = grp.index(max(grp))
+        dik_keys.PoC(getattr(conf, 'targetgrp'+str(index+1)))
+        time.sleep(.2)
+        dik_keys.PoC(conf.singleheal)       

@@ -18,6 +18,19 @@ bomb_IP = "192.168.0.28"
 team = {"heal": heal_IP, "bomb": bomb_IP, "thane" : thane_IP}
 grp_size = 3
 
+#Keybinds
+
+
+target_grp1 = ('SHIFT', 'F1')
+target_grp2 = ('SHIFT', 'F2')
+target_grp3 = ('SHIFT', 'F3')
+target_grp4 = ('SHIFT', 'F4')
+target_grp5 = ('SHIFT', 'F5')
+target_grp6 = ('SHIFT', 'F6')
+target_grp7 = ('SHIFT', 'F7')
+target_grp8 = ('SHIFT', 'F8')
+
+
 scrnx1 = 40
 scrny1 = 40
 scrnx2 = 1355
@@ -68,14 +81,18 @@ targetbarw = targetbarx2 - targetbarx1
 targetbarh = targetbary2 - targetbary1
 
 hhelpx1 = 17
-hhelpx1 = 43
-hhelpy2 = 91
+hhelpy1 = 43
+hhelpx2 = 91
 hhelpy2 = 68
 hhelpw = hhelpx2 - hhelpx1 
 hhelph = hhelpy2 - hhelpy1 
 hhelpdis = 28
 
-
+hhelp100 = 49000
+hhelp90 = 78000
+hhelp50 = 250000
+hhelp10 = 430000 
+hhelpdead = 229000
 healthbarthreshold = 350000
 endubarthreshold = 75000
 manabarthreshold = 100000

@@ -242,6 +242,11 @@ def Up(key):
     """Taste loslassen."""
     ReleaseKey(GetCode(key))
 
+def PoC(key):
+    if isinstance(key, tuple):
+        print("Tuple:", key)
+    else:
+        print("Einzelner Wert:", key)
 
 def Press(key, delay=None):
     """Taste drücken, kurz halten, loslassen."""

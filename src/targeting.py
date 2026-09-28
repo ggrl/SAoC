@@ -11,7 +11,7 @@ from pynput import mouse
 #local dp
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
-import configs.config_priv.py as conf
+import configs.config_priv as conf
 
 mouse = Controller()
 
@@ -49,7 +49,7 @@ def get_px(bar, color):
                    return None 
       
 def get_px_hh(grp_size):
-    redpxtp = ()
+    pxlist = []
     for x in range(grp_size):
         image = ig.grab(bbox=(conf.hhelpx1, conf.hhelpy1 + (x * conf.hhelpdis), conf.hhelpx2 +x, conf.hhelpy2 + (x * conf.hhelpdis)))
         frame = np.array(image)         
@@ -57,8 +57,9 @@ def get_px_hh(grp_size):
         w = conf.hhelpw
             
         region_bar = frame[:h, :w]
-        redpxtp(x) = region_bar[:, :, 0].sum(dtype=np.int64)
-    return redpxtp
+        redpx = region_bar[:, :, 0].sum(dtype=np.int64)
+        pxlist.append(int(redpx))
+    return pxlist
 
 def targeting(pull_key):
     screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
