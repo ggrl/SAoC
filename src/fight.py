@@ -217,15 +217,15 @@ def healing():
 
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
-    # Wenn alle über 97 sind → nichts machen
-    if all(x < conf.hhelp100 for x in grp):
-        return grp
-
+    
     # Werte 43-44 ignorieren
     valid = [i for i, x in enumerate(grp) if not conf.hhelpdead <= x <= conf.hhelpdead + 2500]
 
     # Falls nur ignorierte Werte vorhanden sind
     if not valid:
+        return grp
+    # Wenn alle über 97 sind → nichts machen
+    if all(x < conf.hhelp100 for x in valid):
         return grp
 
     # Werte unter 50
