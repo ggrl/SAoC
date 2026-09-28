@@ -82,7 +82,7 @@ def thane():
             print('Attackloop', x, '/', y)
 
 # 3: bomb 0: /assist puller 4: quickcast 5: str/con-debuff
-def SM_bomb_team(stop_event):
+def bomb_ae_team(stop_event):
     castdelay = 2.5
     print("|--- Start Fight ---|")
     #wait for pull
