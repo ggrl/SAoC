@@ -192,7 +192,7 @@ def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     
     valid = [i for i, x in enumerate(grp) if not conf.hhelpdead >= x >= conf.hhelpdead + 2500]
-
+    print("valid:",valid)
     if not valid:
         return 1
     if all(x < conf.hhelp100 for x in valid):
