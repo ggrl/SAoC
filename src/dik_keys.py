@@ -244,7 +244,7 @@ def Up(key):
 
 def PoC(key):
     if isinstance(key, tuple):
-        Combo(key)
+        Combo(key(0), key(1))
     else:
        Press(key)
 
