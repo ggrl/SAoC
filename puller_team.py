@@ -31,7 +31,6 @@ mana_reg = conf.mana_reg
 role = conf.role
 buffcount = conf.buffcount
 pullcount = conf.pullcount
-heal_IP = conf.heal_IP
 team = conf.team
 grp_size = conf.grp_size
 
