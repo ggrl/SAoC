@@ -89,9 +89,10 @@ def SM_bomb_team(stop_event):
     while not stop_event.is_set():
         print("- BOMB -")
         dik_keys.Press('0')
-        time.sleep(.5)
+        time.sleep(.2)
         dik_keys.Press('5')
-        for x in range(5):
+        time.sleep(.2)
+        for x in range(4):
             if stop_event.is_set():
                 return
             dik_keys.Press('3')
@@ -107,16 +108,16 @@ def healer_ae_team(stop_event):
     castdelay = 2.5
     print("|--- Start Fight ---|")
     #wait for pull
-    stop_event.wait(6)
+    stop_event.wait(5)
     while not stop_event.is_set():
         dik_keys.Press('0')
-        time.sleep(.5)
+        time.sleep(.2)
         print("- AE-Stun -")
         dik_keys.Press('3')
         time.sleep(castdelay)
         dik_keys.Press('3')
         time.sleep(.5)
-        for x in range(3):
+        for x in range(5):
             if stop_event.is_set():
                 return
             print("- GRP-Heal -")
