@@ -187,7 +187,11 @@ def thane_ae_team(stop_event=None):
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
-    if under_50:
+    dead = [i for i, x in enumerate(grp) if x > conf.hhelpdead and x < conf.hhelpdead + 1000]
+    if sum(x < conf.hhelp100 for x in grp) >= conf.grp_size:
+        return
+    
+    elif under_50 and not dead:
         index = under_50[grp.index(max(grp[i] for i in under_50))]
         dik_keys.PoC(getattr(conf, 'target_grp'+str(index)))
         time.sleep(.2)
