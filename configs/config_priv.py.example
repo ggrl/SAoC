@@ -67,6 +67,15 @@ targetbary2 = 19
 targetbarw = targetbarx2 - targetbarx1
 targetbarh = targetbary2 - targetbary1
 
+hhelpx1 = 17
+hhelpx1 = 43
+hhelpy2 = 91
+hhelpy2 = 68
+hhelpw = hhelpx2 - hhelpx1 
+hhelph = hhelpy2 - hhelpy1 
+hhelpdis = 28
+
+
 healthbarthreshold = 350000
 endubarthreshold = 75000
 manabarthreshold = 100000
