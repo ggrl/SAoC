@@ -5,6 +5,7 @@ import random
 import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import src.regging as regging
+import configs.config_priv as conf
 
 def hunter(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
@@ -50,6 +51,9 @@ def thane_ae_team(grp_size, buffcount, stop_event=None):
     return True 
 
 
+
+#--------------- utils ---------------#
+
 def stick(stop_event=None):
     print('--------| Sticking |---------')
     dik_keys.Combo('SHIFT', 'F1')
@@ -70,3 +74,7 @@ def spread(stop_event=None):
     key = random.choice(['A','D'])
     delay = random.random()
     dik_keys.Press(key, delay/2)
+
+def sprint(stop_event=None):
+    print('--------| Spreading |---------') 
+    dik_keys.Press(conf.sprint_key) 
