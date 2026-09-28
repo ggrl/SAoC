@@ -244,9 +244,9 @@ def Up(key):
 
 def PoC(key):
     if isinstance(key, tuple):
-        print("Tuple:", key)
+        Combo(key)
     else:
-        print("Einzelner Wert:", key)
+       Press(key)
 
 def Press(key, delay=None):
     """Taste drücken, kurz halten, loslassen."""

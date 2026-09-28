@@ -18,7 +18,8 @@ team = {x[0]: x[1] for x in (healer, thane, bomb) if x[2]}
 grp_size = 2
 
 #Keybinds
-
+singleheal = '4'
+grpheal = '5'
 
 target_grp1 = ('SHIFT', 'F1')
 target_grp2 = ('SHIFT', 'F2')
