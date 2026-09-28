@@ -189,7 +189,9 @@ def healing():
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
     dead = [i for i, x in enumerate(grp) if x > conf.hhelpdead and x < conf.hhelpdead + 1000]
     if sum(x < conf.hhelp100 for x in grp) >= conf.grp_size:
-        return
+        print(sum(x < conf.hhelp100 for x in grp))
+        print("grp size: ", conf.grp_size)
+        return "-- Everyone Full --"
     
     elif under_50 and not dead:
         index = under_50[grp.index(max(grp[i] for i in under_50))]

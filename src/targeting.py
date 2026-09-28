@@ -59,7 +59,7 @@ def get_px_hh(grp_size):
         region_bar = frame[:h, :w]
         redpx = region_bar[:, :, 0].sum(dtype=np.int64)
         pxlist.append(int(redpx))
-        print("Grp-Health-Pixels: ", pxlist)
+    print("Grp-Health-Pixels: ", pxlist)
     return pxlist
 
 def targeting(pull_key):
