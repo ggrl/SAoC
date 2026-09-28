@@ -2,6 +2,7 @@ import tkinter as tk
 
 #local dep
 import puller_team
+import configs.config_priv as conf
 
 '''
 Fight-Bar:5
@@ -11,8 +12,7 @@ Utility-Bar: 7
 
 # ----- Configuration -----#
 
-heal_IP = "192.168.0.42"
-team = {"heal": heal_IP}
+team = conf.team
 grp_size = 2
 
 #--------------------------#
