@@ -193,7 +193,7 @@ def healing():
     
     elif under_50 and not dead:
         index = under_50[grp.index(max(grp[i] for i in under_50))]
-        dik_keys.PoC(getattr(conf, 'target_grp'+str(index)))
+        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
         time.sleep(.2)
         dik_keys.PoC(conf.singleheal)
 
