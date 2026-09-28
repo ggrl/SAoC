@@ -5,7 +5,7 @@ import time
 import pynput
 from pynput.keyboard import Key, Listener
 from pynput import keyboard
-from pynput.mouse import Button, Controller
+from pynput.mouse import Controller
 from pynput import mouse
 
 #local dp

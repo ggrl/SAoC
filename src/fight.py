@@ -131,15 +131,20 @@ def healer_ae_team(stop_event):
 #Thane: 6: Mjollnir-AE 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
 def thane_ae_team(stop_event=None):
         print('--------| FIGHT rotation |---------')
-        castdelay = 3
+        castdelay = 2.5
         meleedelay = 3.5
         
         if stop_event is not None:
+            time.sleep(1)
             dik_keys.Press('0')
             time.sleep(.5)
             dik_keys.Press('4')
             time.sleep(.5)
             for x in range(6):
+                if stop_event.is_set():
+                    return
+                dik_keys.Press('0')
+                time.sleep(.5)
                 dik_keys.Press('6')
                 time.sleep(castdelay)
             while not stop_event.is_set():
