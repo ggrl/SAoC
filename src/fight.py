@@ -187,7 +187,7 @@ def thane_ae_team(stop_event=None):
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
-    dead = [i for i, x in enumerate(grp) if x > conf.hhelpdead and x < conf.hhelpdead + 1000]
+    dead = [i for i, x in enumerate(grp) if x > conf.hhelpdead and x < conf.hhelpdead + 3000]
     print(sum(x < conf.hhelp100 for x in grp))
     if sum(x < conf.hhelp100 for x in grp) >= conf.grp_size:
         print(sum(x < conf.hhelp100 for x in grp))
