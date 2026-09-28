@@ -185,7 +185,7 @@ def thane_ae_team(stop_event=None):
                 print('Attackloop', x, '/', y)
         
 def healing():
-    grp = targeting.grp(conf.grp_size)
+    grp = targeting.get_px_hh(conf.grp_size)
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
     if under_50:
         index = under_50[grp.index(max(grp[i] for i in under_50))]
