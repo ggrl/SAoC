@@ -8,15 +8,14 @@ mana = True #need mana?
 role = 'healer_ae_team'
 buffcount = 3  #max: 9 buffs
 pullcount = 3 #pulls until reg
-grp_size = 2
 endu_reg = endu
 mana_reg = mana
 
-heal_IP = "192.168.0.42"
-thane_IP = "192.168.0.106"
-bomb_IP = "192.168.0.28"
-team = {"heal": heal_IP, "bomb": bomb_IP, "thane" : thane_IP}
-grp_size = 3
+healer = ("heal", "192.168.0.42", True)
+thane = ("thane", "192.168.0.106", False)
+bomb = ("bomb", "192.168.0.28", False)
+team = {x[0]: x[1] for x in (healer, thane, bomb) if x[2]}
+grp_size = 2
 
 #Keybinds
 
