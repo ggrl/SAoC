@@ -15,7 +15,7 @@ healer = ("heal", "192.168.0.42", True)
 thane = ("thane", "192.168.0.106", False)
 bomb = ("bomb", "192.168.0.28", False)
 team = {x[0]: x[1] for x in (healer, thane, bomb) if x[2]}
-grp_size = 2
+grp_size = 4
 
 #Keybinds
 singleheal = '4'
@@ -92,7 +92,7 @@ hhelp100 = 60000
 hhelp90 = 78000
 hhelp50 = 250000
 hhelp10 = 430000 
-hhelpdead = 229000
+hhelpdead = 227000
 healthbarthreshold = 350000
 endubarthreshold = 75000
 manabarthreshold = 100000

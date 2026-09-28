@@ -191,7 +191,7 @@ def thane_ae_team(stop_event=None):
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     
-    valid = [i for i, x in enumerate(grp) if not conf.hhelpdead <= x <= conf.hhelpdead + 2500]
+    valid = [i for i, x in enumerate(grp) if not conf.hhelpdead >= x >= conf.hhelpdead + 2500]
 
     if not valid:
         return 1
