@@ -207,7 +207,7 @@ def healing():
         dik_keys.PoC(conf.singleheal)
         time.sleep(2.5)
 
-    elif sum(x > conf.hhelp100 for x in grp) >= 3:
+    elif sum(x > conf.hhelp90 for x in grp) >= 3:
         time.sleep(.2)
         dik_keys.PoC(conf.grpheal)
         time.sleep(2.4)
