@@ -19,7 +19,7 @@ def thane(grp_size, buffcount, stop_event=None):
     return True
 
 # 3: f6: buffbar (0: cast pet)
-def SM_bomb_team(grp_size, buffcount, stop_event=None):
+def bomb_ae_team(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     dik_keys.Combo('SHIFT', '6') #go to buffbar
     time.sleep(0.5)
