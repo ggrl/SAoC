@@ -118,12 +118,13 @@ def healer_ae_team(stop_event):
         time.sleep(castdelay)
         dik_keys.Press('3')
         time.sleep(.5)
-        for x in range(6):
+        x = 0
+        while x <= 60:
             if stop_event.is_set():
                 return
             print("- Healing -")
-            healing()
-            time.sleep(.2)
+            x = x + healing()
+            time.sleep(.5)
         
 
 #Thane: 6: Mjollnir-AE 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
@@ -185,50 +186,18 @@ def thane_ae_team(stop_event=None):
                 print('Attackloop', x, '/', y)
 
 
-'''
-def healing():
-    grp = targeting.get_px_hh(conf.grp_size)
-    under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
-    print(sum(x < conf.hhelp100 for x in grp))
-    if sum(x < conf.hhelp100 for x in grp) >= conf.grp_size:
-        print(sum(x < conf.hhelp100 for x in grp))
-        print("grp size: ", conf.grp_size)
-        return "-- Everyone Full --"
-    
-    elif under_50:
-        index = under_50[grp.index(max(grp[i] for i in under_50))]
-        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
-        time.sleep(.2)
-        dik_keys.PoC(conf.singleheal)
-        time.sleep(2.5)
-
-
-    elif sum(x > conf.hhelp100 for x in grp) >= 3:
-        time.sleep(.2)
-        dik_keys.PoC(conf.grpheal)
-        time.sleep(2.4)
-
-    else:
-        index = grp.index(max(grp))
-        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
-        time.sleep(.2)
-        dik_keys.PoC(conf.singleheal)
-        time.sleep(2.5) ''' 
+ 
 
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     
-    # Werte 43-44 ignorieren
     valid = [i for i, x in enumerate(grp) if not conf.hhelpdead <= x <= conf.hhelpdead + 2500]
 
-    # Falls nur ignorierte Werte vorhanden sind
     if not valid:
-        return grp
-    # Wenn alle über 97 sind → nichts machen
+        return 1
     if all(x < conf.hhelp100 for x in valid):
-        return grp
+        return 1
 
-    # Werte unter 50
     under_50 = [i for i in valid if grp[i] > conf.hhelp50]
 
     if under_50:
@@ -250,6 +219,6 @@ def healing():
         dik_keys.PoC(conf.singleheal)
         time.sleep(2.5)
 
-    return grp
+    return 10
 
 
