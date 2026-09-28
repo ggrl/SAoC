@@ -195,7 +195,7 @@ def healing():
     print("valid:",valid)
     if not valid:
         return 1
-    if all(x < conf.hhelp100 for x in valid):
+    if all(grp[i] < conf.hhelp100 for i in valid):
         return 1
 
     under_50 = [i for i in valid if grp[i] > conf.hhelp50]
