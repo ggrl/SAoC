@@ -189,7 +189,7 @@ def healing():
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
     if under_50:
         index = under_50[grp.index(max(grp[i] for i in under_50))]
-        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
+        dik_keys.PoC(getattr(conf, 'target_grp'+str(index)))
         time.sleep(.2)
         dik_keys.PoC(conf.singleheal)
 
