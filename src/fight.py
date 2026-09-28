@@ -183,7 +183,9 @@ def thane_ae_team(stop_event=None):
                 time.sleep(.5)
                 x = x+1 
                 print('Attackloop', x, '/', y)
-        
+
+
+'''
 def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
@@ -211,4 +213,43 @@ def healing():
         dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
         time.sleep(.2)
         dik_keys.PoC(conf.singleheal)
-        time.sleep(2.5)       
+        time.sleep(2.5) ''' 
+
+def healing():
+    grp = targeting.get_px_hh(conf.grp_size)
+    # Wenn alle über 97 sind → nichts machen
+    if all(x < conf.hhelp100 for x in grp):
+        return grp
+
+    # Werte 43-44 ignorieren
+    valid = [i for i, x in enumerate(grp) if not conf.hhelpdead <= x <= conf.hhelpdead + 2500]
+
+    # Falls nur ignorierte Werte vorhanden sind
+    if not valid:
+        return grp
+
+    # Werte unter 50
+    under_50 = [i for i in valid if grp[i] > conf.hhelp50]
+
+    if under_50:
+        index = max(under_50, key=lambda i: grp[i])
+        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
+        time.sleep(.2)
+        dik_keys.PoC(conf.singleheal)
+        time.sleep(2.5)
+
+    elif sum(x > conf.hhelp100 for x in grp) >= 3:
+        time.sleep(.2)
+        dik_keys.PoC(conf.grpheal)
+        time.sleep(2.4)
+
+    else:
+        index = max(valid, key=lambda i: grp[i])
+        dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
+        time.sleep(.2)
+        dik_keys.PoC(conf.singleheal)
+        time.sleep(2.5)
+
+    return grp
+
+
