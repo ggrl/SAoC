@@ -88,7 +88,7 @@ hhelpw = hhelpx2 - hhelpx1
 hhelph = hhelpy2 - hhelpy1 
 hhelpdis = 28
 
-hhelp100 = 49000
+hhelp100 = 60000
 hhelp90 = 78000
 hhelp50 = 250000
 hhelp10 = 430000 

@@ -123,7 +123,7 @@ def healer_ae_team(stop_event):
                 return
             print("- Healing -")
             healing()
-            time.sleep(castdelay)
+            time.sleep(.2)
         
 
 #Thane: 6: Mjollnir-AE 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
