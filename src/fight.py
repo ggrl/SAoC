@@ -188,6 +188,7 @@ def healing():
     grp = targeting.get_px_hh(conf.grp_size)
     under_50 = [i for i, x in enumerate(grp) if x < conf.hhelp50]
     dead = [i for i, x in enumerate(grp) if x > conf.hhelpdead and x < conf.hhelpdead + 1000]
+    print(sum(x < conf.hhelp100 for x in grp))
     if sum(x < conf.hhelp100 for x in grp) >= conf.grp_size:
         print(sum(x < conf.hhelp100 for x in grp))
         print("grp size: ", conf.grp_size)
@@ -198,13 +199,17 @@ def healing():
         dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
         time.sleep(.2)
         dik_keys.PoC(conf.singleheal)
+        time.sleep(2.5)
+
 
     elif sum(x > conf.hhelp100 for x in grp) >= 3:
         time.sleep(.2)
         dik_keys.PoC(conf.grpheal)
+        time.sleep(2.4)
 
     else:
         index = grp.index(max(grp))
         dik_keys.PoC(getattr(conf, 'target_grp'+str(index+1)))
         time.sleep(.2)
-        dik_keys.PoC(conf.singleheal)       
+        dik_keys.PoC(conf.singleheal)
+        time.sleep(2.5)       
