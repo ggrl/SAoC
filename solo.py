@@ -6,7 +6,6 @@ import importlib
 
 #local dep
 
-import configs.UI_config as UI_config
 import src.targeting as targeting
 import src.fight as fight
 import src.dik_keys as dik_keys

@@ -1,5 +1,5 @@
 program = 'support_team'
-resolution = '1366VM'
+resolution = 1366
 endu = False #need endu?
 mana = True #need mana?
 role = 'healer_ae_team'

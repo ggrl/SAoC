@@ -1,7 +1,6 @@
 import time
 
 #local dp
-import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import src.targeting as targeting
 import configs.config_priv as conf
@@ -170,7 +169,7 @@ def thane_ae_team(stop_event=None):
             x = 0
             y = 5    
             if targeting.get_px('targetbar', 'blue') < 140000 or x >= y:    
-                dik_keys.Click(button='left', x=UI_config.scrnx1+UI_config.scrnw//2, y=UI_config.scrny1+UI_config.scrnh//2)
+                dik_keys.Click(button='left', x=conf.scrnx1+conf.scrnw//2, y=conf.scrny1+conf.scrnh//2)
                 print('fight finished')
                 return True  
             else:
