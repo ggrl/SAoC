@@ -92,9 +92,9 @@ def formation(stop_event=None):
         spread()            
 
 def sprint(stop_event=None):
-    print('--------| Spreading |---------') 
+    print('--------| Sprinting |---------') 
     dik_keys.Press(conf.sprint_key) 
 
 def sit(stop_event=None):
-    print('--------| Spreading |---------') 
+    print('--------| Sit down |---------') 
     dik_keys.Press(conf.sit_key) 

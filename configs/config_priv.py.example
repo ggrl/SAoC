@@ -1,3 +1,4 @@
+program = 'support_team'
 resolution = '1366VM'
 endu = False #need endu?
 mana = True #need mana?
@@ -6,11 +7,11 @@ buffcount = 3  #max: 9 buffs
 pullcount = 3 #pulls until reg
 endu_reg = endu
 mana_reg = mana
-
-healer = ("heal", "192.168.0.42", True)
-thane = ("thane", "192.168.0.106", False)
-bomb = ("bomb", "192.168.0.28", False)
-team = {x[0]: x[1] for x in (healer, thane, bomb) if x[2]}
+team ={
+    "heal": ("192.168.0.42", True),
+    "thane": ("192.168.0.106", False),
+    "bomb": ("192.168.0.28", False)
+}
 grp_size = 4
 
 #Keybinds

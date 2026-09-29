@@ -96,7 +96,7 @@ def send_wait(command, target):
     return response_dec   
 
 
-if __name__ == '__main__':
+def main():
     if countdown():
         getReady()
     while True:
