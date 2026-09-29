@@ -13,49 +13,16 @@ Utility-Bar: 7
 # ----- Configuration -----#
 
 team = conf.team
-grp_size = 2
 
 #--------------------------#
 
-def button_fight():
-    for x in team:
-        puller_team.send_forget('fight', team[x])
+def send_command(command):
+    for x in conf.team:
+         if conf.team[x][1]:
+            puller_team.send_forget(command, team[x][0])
+         else:
+             print("not sent")   
 
-
-def button_wait():
-    for x in team:
-        puller_team.send_forget('wait', team[x])
-
-
-def button_regg():
-    for x in team:
-        puller_team.send_wait('regg', team[x])
-    
-
-def button_buff():
-    for x in team:
-        puller_team.send_forget('buff', team[x])
-
-
-def button_start():
-    for x in team:
-        puller_team.send_wait('start', team[x])
-
-def button_stick():
-    for x in team:
-        puller_team.send_forget('stick', team[x])
-
-def button_spread():
-    for x in team:
-        puller_team.send_forget('spread', team[x])
-
-def button_sprint():
-    for x in team:
-        puller_team.send_forget('sprint', team[x]) 
-
-def button_sit():
-    for x in team:
-        puller_team.send_forget('sit', team[x]) 
 
 def main():
     #--------- GUI ---------#
@@ -85,15 +52,15 @@ def main():
 
 
     buttons = [
-        ("FIGHT", button_fight),
-        ("WAIT", button_wait),
-        ("SIT", button_sit),
-        ("BUFF", button_buff),
-        ("STICK", button_stick),
-        ("SPRINT", button_sprint),
-        ("SPREAD", button_spread),
-        ("START", button_start),
-    ]
+    ("FIGHT", lambda: send_command("fight")),
+    ("WAIT", lambda: send_command("wait")),
+    ("SIT", lambda: send_command("sit")),
+    ("BUFF", lambda: send_command("buff")),
+    ("STICK", lambda: send_command("stick")),
+    ("SPRINT", lambda: send_command("sprint")),
+    ("SPREAD", lambda: send_command("spread")),
+    ("START", lambda: send_command("spread")),
+]
 
     for text, function in buttons:
         tk.Button(

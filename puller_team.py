@@ -61,7 +61,7 @@ def getReady():
     time.sleep(0.5)
     regging.buffing(buffcount)
     for x in team:
-        send_wait('start', team[x])
+        send_wait('start', team[x][0])
     dik_keys.Combo('SHIFT', '5') #go to fight-bar
     time.sleep(.5)
     dik_keys.Press(pull_weapon) #equip pull-weapon
@@ -108,17 +108,20 @@ def main():
             elif targeting.pull_check(pull_key):
                 tryx = 0
                 for x in team:
-                    send_forget('fight', team[x])
+                    if conf.team[x][1]:
+                        send_forget('fight', team[x][0])
                 if role(pull_weapon):
                     buffx = buffx + 1
                     pullx = pullx + 1
                     for x in team:
-                        send_forget('wait', team[x])
+                        if conf.team[x][1]:
+                            send_forget('wait', team[x][0])
                     print("Buffing in", 20-buffx, "pulls.")
                     if buffx >= 20:
                         buffx = 0
                         for x in team:
-                            send_forget('buff', team[x])
+                            if conf.team[x][1]:
+                                send_forget('buff', team[x][0])
                         if regging.buffing(buffcount):
                             regging.regging(sit_key, mana_reg, endu_reg)
                     elif pullx >= pullcount:
@@ -127,7 +130,8 @@ def main():
                         time.sleep(.5)
                         print("|------- TEAM regging -------|")
                         for x in team:
-                            print(f"|-- {team[x]}: response: ", send_wait('regg', team[x]), " --|")
+                            if conf.team[x][1]:
+                                print(f"|-- {team[x][0]}: response: ", send_wait('regg', team[x][0]), " --|")
                         dik_keys.Press(sit_key)
                         time.sleep(.5)
                         regging.regging(sit_key, mana_reg, endu_reg)            
