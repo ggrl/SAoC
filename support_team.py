@@ -40,7 +40,9 @@ functions = {
     "wait": (regging.wait,()),
     "start": (getattr(start, role),(grp_size, buffcount)),
     "stick": (start.stick,()),
-    "spread": (start.spread,())
+    "spread": (start.spread,()),
+    "sprint": (start.sprint()),
+    "sit": (start.sit())
 }
 
 
@@ -70,41 +72,41 @@ def start_worker(command):
 
     current_thread.start()
 
+def main():
+    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind(("0.0.0.0", 5000))
+    server.listen(5)
 
-server.bind(("0.0.0.0", 5000))
-server.listen(5)
-
-print("|--------- Listening --------|")
+    print("|--------- Listening --------|")
 
 
-while True:
+    while True:
 
-    conn, addr = server.accept()
+        conn, addr = server.accept()
 
-    try:
-        command = conn.recv(1024).decode().strip()
+        try:
+            command = conn.recv(1024).decode().strip()
 
-        if command in functions:
+            if command in functions:
 
-            if command =='regg' or command =='start':
+                if command =='regg' or command =='start':
 
-                # stop current worker
-                if current_thread and current_thread.is_alive():
-                        stop_event.set()
-                        current_thread.join()
-                
-                # regging execute synchonous
-                functions[command][0](*functions[command][1])
-                
-                # send client
-                conn.sendall(b"DONE")
+                    # stop current worker
+                    if current_thread and current_thread.is_alive():
+                            stop_event.set()
+                            current_thread.join()
+                    
+                    # regging execute synchonous
+                    functions[command][0](*functions[command][1])
+                    
+                    # send client
+                    conn.sendall(b"DONE")
+                else:
+                    start_worker(command)
             else:
-                start_worker(command)
-        else:
-            conn.sendall(b"UNKOWN")
+                conn.sendall(b"UNKOWN")
 
-    finally:
-        conn.close()
+        finally:
+            conn.close()
