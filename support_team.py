@@ -1,16 +1,15 @@
 import socket
 import threading
 import time
-import importlib
 
 
 #local dp
-import configs.UI_config as UI_config
 import src.fight as fight
 import src.regging as regging
 import src.dik_keys as dik_keys
 import src.start as start
 import configs.config_priv as conf
+
 
 '''
 Fight-Bar:5
@@ -41,18 +40,12 @@ functions = {
     "start": (getattr(start, role),(grp_size, buffcount)),
     "stick": (start.stick,()),
     "spread": (start.spread,()),
-    "sprint": (start.sprint()),
-    "sit": (start.sit())
+    "sprint": (start.sprint,()),
+    "sit": (start.sit,())
 }
 
 
-UI_config.current = importlib.import_module(f"configs.UI_config_{resolution}")
-current_thread = None
 stop_event = None
-
-
-def start_up():
-    print("|--- Start Up ---|")
     
 
 def start_worker(command):
@@ -110,3 +103,4 @@ def main():
 
         finally:
             conn.close()
+         

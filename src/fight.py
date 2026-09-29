@@ -15,7 +15,7 @@ import configs.config_priv as conf
 
 
 #Hunter: 3: Standart-Shot, 3: Power-Shot, 2: Speer-Style(anytime) 3: Speer-Style(Follow-up,cond.)  F3: Bogen, F2: Speer
-def hunter():
+def hunter_solo():
     print('--------| FIGHT rotation |---------')
     bowdelay = 4.5
     meleedelay = 3.5
@@ -48,7 +48,7 @@ def hunter():
             print(x)
 
 #Thane: 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
-def thane():
+def thane_solo():
     print('--------| FIGHT rotation |---------')
     castdelay = 3
     meleedelay = 3.5

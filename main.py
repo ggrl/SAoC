@@ -10,16 +10,20 @@ import solo
 import support_team
 
 
+
 programs = {
     "support_team": support_team.main,
     "puller_team": puller_team.main,
-    "manual_drive": manual_drive.main
+    "manual_drive": manual_drive.main,
+    "solo": solo.main
 }
 
 roles = [
     "thane_ae_team",
     "healer_ae_team",
-    "bomb_ae_team"
+    "bomb_ae_team",
+    "hunter_solo",
+    "thane_solo"
 ]
 
 
