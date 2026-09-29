@@ -34,14 +34,15 @@ grp_size = conf.grp_size
 
 functions = {
     "fight": (getattr(fight, role),()),
-    "regg": (regging.regging,(sit_key, endu, mana)),
-    "buff": (regging.buffing,(buffcount,)),
-    "wait": (regging.wait,()),
-    "start": (getattr(start, role),(grp_size, buffcount)),
-    "stick": (start.stick,()),
-    "spread": (start.spread,()),
-    "sprint": (start.sprint,()),
-    "sit": (start.sit,())
+    "regg": (regging.regging, (sit_key, endu, mana)),
+    "buff": (regging.buffing, (buffcount,)),
+    "wait": (regging.wait, ()),
+    "start": (getattr(start, role), (grp_size, buffcount)),
+    "stick": (start.stick, ()),
+    "spread": (start.spread, ()),
+    "sprint": (start.sprint, ()),
+    "sit": (start.sit, ()),
+    "formation": (start.formation, ())
 }
 
 

@@ -52,6 +52,7 @@ def main():
 
 
     buttons = [
+    ("FORMATION", lambda: send_command("formation")),
     ("FIGHT", lambda: send_command("fight")),
     ("WAIT", lambda: send_command("wait")),
     ("SIT", lambda: send_command("sit")),
