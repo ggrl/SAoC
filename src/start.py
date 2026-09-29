@@ -6,13 +6,13 @@ import src.dik_keys as dik_keys
 import src.regging as regging
 import configs.config_priv as conf
 
-def hunter(grp_size, buffcount, stop_event=None):
+def hunter_solo(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     regging.buffing(buffcount)
     return True
 
 #Thane: 3: Cast-DD, 4: Insta-DD, 5: Insta-Pbaoe, 2: Melee-Style(anytime) 1: Melee-Style(Follow-up,cond.)  F2: 2h, F1: 1h
-def thane(grp_size, buffcount, stop_event=None):
+def thane_solo(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     regging.buffing(buffcount)
     return True

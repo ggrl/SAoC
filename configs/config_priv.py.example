@@ -33,10 +33,10 @@ target_grp7 = ('SHIFT', 'F7')
 target_grp8 = ('SHIFT', 'F8')
 
 
-scrnx1 = 40
-scrny1 = 40
-scrnx2 = 1355
-scrny2 = 520
+scrnx1 = int(resolution*0.03)
+scrny1 = int(resolution*0.03)
+scrnx2 = int(resolution*0.96)
+scrny2 = int(resolution*0.37)
 scrnw = scrnx2 - scrnx1
 scrnh = scrny2 - scrny1
 
