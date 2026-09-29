@@ -9,7 +9,6 @@ from pynput.mouse import Controller
 from pynput import mouse
 
 #local dp
-import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import configs.config_priv as conf
 
@@ -18,16 +17,16 @@ mouse = Controller()
 
 def get_px(bar, color):
             image = ig.grab(bbox=(
-                getattr(UI_config.current, bar + 'x1'),
-                getattr(UI_config.current, bar + 'y1'),
-                getattr(UI_config.current, bar + 'x2'),
-                getattr(UI_config.current, bar + 'y2')
+                getattr(conf, bar + 'x1'),
+                getattr(conf, bar + 'y1'),
+                getattr(conf, bar + 'x2'),
+                getattr(conf, bar + 'y2')
             ))
     
             frame = np.array(image)
     
-            h = getattr(UI_config.current, bar + 'h')
-            w = getattr(UI_config.current, bar + 'w')
+            h = getattr(conf, bar + 'h')
+            w = getattr(conf, bar + 'w')
     
             region_bar = frame[:h, :w]
     
@@ -63,7 +62,7 @@ def get_px_hh(grp_size):
     return pxlist
 
 def targeting(pull_key):
-    screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
+    screen = ig.grab(bbox=(conf.scrnx1,conf.scrny1,conf.scrnx2,conf.scrny2))
     current_frame = np.array(screen)
     previous_frame = current_frame
     print(pull_key)
@@ -75,7 +74,7 @@ def targeting(pull_key):
     
     #while (True):
     for i in range(0,10):
-        screen = ig.grab(bbox=(UI_config.current.scrnx1,UI_config.current.scrny1,UI_config.current.scrnx2,UI_config.current.scrny2))
+        screen = ig.grab(bbox=(conf.scrnx1, conf.scrny1, conf.scrnx2, conf.scrny2))
         current_frame = np.array(screen)
         
         
@@ -100,7 +99,7 @@ def targeting(pull_key):
         bottom_right = (top_left[0]+20, top_left[1]+20)
         centerx = (max_loc[0]-3, max_loc[1]+3)
 
-        centerx_ig = (centerx[0]+UI_config.current.scrnx1, centerx[1]+UI_config.current.scrny1) 
+        centerx_ig = (centerx[0]+conf.scrnx1, centerx[1]+conf.scrny1) 
         
         cv2.circle(frame_thresh_c,(centerx), 20, (0,255,), 2)
 
@@ -109,7 +108,7 @@ def targeting(pull_key):
         time.sleep(.2)
 
         
-        if get_px('targetbar', 'blue') > UI_config.current.targetbarthreshold:
+        if get_px('targetbar', 'blue') > conf.targetbarthreshold:
                print('New Target.')
                return True
            
@@ -128,25 +127,25 @@ def pull_check(pull_key):
         targeting(pull_key)            
 
 def test_targeting():        
-            target = ig.grab(bbox=(UI_config.current.targetx1,UI_config.current.targety1,UI_config.current.targetx2,UI_config.current.targety2))
+            target = ig.grab(bbox=(conf.targetx1,conf.targety1,conf.targetx2,conf.targety2))
             target_frame = np.array(target)
              
             tredpx = 0
             tgreenpx = 0
             tbluepx = 0
-            region = target_frame[:UI_config.current.targeth, :UI_config.current.targetw]
+            region = target_frame[:conf.targeth, :conf.targetw]
             tredpx, tgreenpx, tbluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
             print("red", tredpx)
             print("green", tgreenpx)
             print("blue", tbluepx)
 
 def test_targeting2():  
-         cchat = ig.grab(bbox=(UI_config.current.cchatx1,UI_config.current.cchaty1,UI_config.current.cchatx2,UI_config.current.cchaty2))
+         cchat = ig.grab(bbox=(conf.cchatx1,conf.cchaty1,conf.cchatx2,conf.cchaty2))
          cchat_frame = np.array(cchat)
          redpx = 0
          greenpx = 0
          bluepx = 0
-         region = cchat_frame[:UI_config.current.cchath, :UI_config.current.cchatw]
+         region = cchat_frame[:conf.cchath, :conf.cchatw]
          redpx, greenpx, bluepx = region.sum(axis=(0, 1), dtype=np.int64)[:3]
          print("red",redpx)
          print("green", greenpx)

@@ -1,8 +1,4 @@
 resolution = '1366VM'
-pull_weapon = 'F1'
-sit_key = 'N'
-sprint_key = 'R'
-pull_key = '3'
 endu = False #need endu?
 mana = True #need mana?
 role = 'healer_ae_team'
@@ -18,8 +14,13 @@ team = {x[0]: x[1] for x in (healer, thane, bomb) if x[2]}
 grp_size = 4
 
 #Keybinds
+pull_weapon = 'F1'
+pull_key = '3'
+sit_key = 'N'
+sprint_key = 'R'
 singleheal = '4'
 grpheal = '5'
+
 
 target_grp1 = ('SHIFT', 'F1')
 target_grp2 = ('SHIFT', 'F2')

@@ -47,7 +47,15 @@ def button_stick():
 
 def button_spread():
     for x in team:
-        puller_team.send_forget('spread', team[x])        
+        puller_team.send_forget('spread', team[x])
+
+def button_sprint():
+    for x in team:
+        puller_team.send_forget('sprint', team[x]) 
+
+def button_sit():
+    for x in team:
+        puller_team.send_forget('sit', team[x]) 
 
 
 #--------- GUI ---------#
@@ -79,9 +87,10 @@ dragbar.bind("<B1-Motion>", move)
 buttons = [
     ("FIGHT", button_fight),
     ("WAIT", button_wait),
-    ("REGG", button_regg),
+    ("SIT", button_sit),
     ("BUFF", button_buff),
     ("STICK", button_stick),
+    ("SPRINT", button_sprint),
     ("SPREAD", button_spread),
     ("START", button_start),
 ]

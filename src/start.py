@@ -2,7 +2,6 @@ import time
 import random
 
 #local dp
-import configs.UI_config as UI_config
 import src.dik_keys as dik_keys
 import src.regging as regging
 import configs.config_priv as conf
@@ -75,6 +74,27 @@ def spread(stop_event=None):
     delay = random.random()
     dik_keys.Press(key, delay/2)
 
+def formation(stop_event=None):
+    print('--------| Formation |---------')
+    if conf.role == 'bomb_ae_team':
+        dik_keys.Press('W',0.5)
+    elif conf.role == 'healer_ae_team':
+        dik_keys.Press('D',0.4)      
+        time.sleep(.5)
+        dik_keys.Press('S',0.8)      
+        time.sleep(.5)
+    elif conf.role == 'thane_ae_team':
+            dik_keys.Press('A',0.5)      
+            time.sleep(.5)
+            dik_keys.Press('S',0.6)      
+            time.sleep(.5)
+    else:
+        spread()            
+
 def sprint(stop_event=None):
     print('--------| Spreading |---------') 
     dik_keys.Press(conf.sprint_key) 
+
+def sit(stop_event=None):
+    print('--------| Spreading |---------') 
+    dik_keys.Press(conf.sit_key) 

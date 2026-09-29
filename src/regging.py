@@ -1,12 +1,10 @@
 
 import time
-import numpy as np
-from PIL import ImageGrab as ig
 
 #local dp
 import src.targeting as targeting
 import src.dik_keys as dik_keys
-import configs.UI_config as UI_config
+import configs.config_priv as conf
 
 
 
@@ -17,11 +15,11 @@ def regging(sitkey, endu, mana, stop_event=None):
     manax = mana
     while True:
         time.sleep(2)
-        if targeting.get_px('healthbar', 'red') > UI_config.current.healthbarthreshold:
+        if targeting.get_px('healthbar', 'red') > conf.healthbarthreshold:
             print('-- Health OK --')
-            if not manax or targeting.get_px('manabar', 'green') > UI_config.current.manabarthreshold:
+            if not manax or targeting.get_px('manabar', 'green') > conf.current.manabarthreshold:
                 print('-- Mana OK --')
-                if not endux or targeting.get_px('endubar', 'green') > UI_config.current.endubarthreshold:
+                if not endux or targeting.get_px('endubar', 'green') > conf.endubarthreshold:
                     print('-- Endu OK --')
                     time.sleep(2)
                     print('--------| regging done |---------')
