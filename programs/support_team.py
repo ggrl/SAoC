@@ -47,6 +47,8 @@ functions = {
 
 
 stop_event = None
+current_thread = None
+
     
 
 def start_worker(command):
