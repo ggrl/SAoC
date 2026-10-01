@@ -21,6 +21,7 @@ sit_key = 'N'
 sprint_key = 'R'
 singleheal = '4'
 grpheal = '5'
+inventory = 'B'
 
 
 target_grp1 = ('SHIFT', 'F1')
@@ -32,6 +33,9 @@ target_grp6 = ('SHIFT', 'F6')
 target_grp7 = ('SHIFT', 'F7')
 target_grp8 = ('SHIFT', 'F8')
 
+
+
+#--------GUI locs----------
 
 scrnx1 = int(resolution*0.03)
 scrny1 = int(resolution*0.03)
@@ -99,3 +103,18 @@ healthbarthreshold = 350000
 endubarthreshold = 75000
 manabarthreshold = 100000
 targetbarthreshold = 450000
+
+bag1 = ()
+bag2 = ()
+bag3 = ()
+bag4 = ()
+bag5 = ()
+
+slot1 = ()
+slot2 = ()
+slot3 = ()
+slot4 = ()
+slot5 = ()
+slot6 = ()
+slot7 = ()
+slot8 = ()

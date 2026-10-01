@@ -8,6 +8,7 @@ import src.fight as fight
 import src.regging as regging
 import src.dik_keys as dik_keys
 import src.start as start
+import src.utils as utils
 import configs.config_priv as conf
 
 
@@ -38,11 +39,12 @@ functions = {
     "buff": (regging.buffing, (buffcount,)),
     "wait": (regging.wait, ()),
     "start": (getattr(start, role), (grp_size, buffcount)),
-    "stick": (start.stick, ()),
-    "spread": (start.spread, ()),
-    "sprint": (start.sprint, ()),
-    "sit": (start.sit, ()),
-    "formation": (start.formation, ())
+    "stick": (utils.stick, ()),
+    "spread": (utils.spread, ()),
+    "sprint": (utils.sprint, ()),
+    "sit": (utils.sit, ()),
+    "formation": (utils.formation, ()),
+    "quit": (utils.quit, ())
 }
 
 

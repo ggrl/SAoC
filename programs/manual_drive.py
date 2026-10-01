@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 #local dep
 import programs.puller_team
@@ -56,12 +57,17 @@ def main():
     ("FIGHT", lambda: send_command("fight")),
     ("WAIT", lambda: send_command("wait")),
     ("SIT", lambda: send_command("sit")),
-    ("BUFF", lambda: send_command("buff")),
     ("STICK", lambda: send_command("stick")),
     ("SPRINT", lambda: send_command("sprint")),
+    
+    ]
+
+    utility1 = [
+    ("BUFF", lambda: send_command("buff")),
     ("SPREAD", lambda: send_command("spread")),
-    ("START", lambda: send_command("spread")),
-]
+    ("START", lambda: send_command("start")),
+    ("QUIT", lambda: send_command("quit")),
+    ]
 
     for text, function in buttons:
         tk.Button(
@@ -70,5 +76,21 @@ def main():
             command=function,
             width=20
         ).pack(pady=5)
+
+    '''for text, function in utility1:
+        tk.Button(
+            root,
+            text=text,
+            command=function,
+            width=8
+        ).pack(pady=5)  '''
+    utility1list = [x[0] for x in utility1]
+    utility1_cb = ttk.Combobox(root, values=utility1list, state="readonly",width=15)
+    utility1_cb.pack(pady=5)
+    def chose_utility1(event=None):
+            for text, function in utility1:
+                if utility1_cb.get() == text:
+                    function()
+    utility1_cb.bind("<<ComboboxSelected>>", chose_utility1)
 
     root.mainloop()

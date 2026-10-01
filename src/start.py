@@ -6,6 +6,9 @@ import src.dik_keys as dik_keys
 import src.regging as regging
 import configs.config_priv as conf
 
+
+
+#------- Startup rotations -------- 
 def hunter_solo(grp_size, buffcount, stop_event=None):
     print('--------| Startup |---------')
     regging.buffing(buffcount)
