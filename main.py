@@ -45,7 +45,7 @@ def GUI():
         print(conf.program)
         conf.role = role_cb.get()
         print(conf.role)
-        conf.grp_size = grpsize_sb.get()
+        conf.grp_size = int(grpsize_sb.get())
         print(conf.grp_size)
         root.destroy()
         Start()
