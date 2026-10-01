@@ -1,7 +1,7 @@
 import tkinter as tk
 
 #local dep
-import puller_team
+import programs.puller_team
 import configs.config_priv as conf
 
 '''
@@ -19,7 +19,7 @@ team = conf.team
 def send_command(command):
     for x in conf.team:
          if conf.team[x][1]:
-            puller_team.send_forget(command, team[x][0])
+            programs.puller_team.send_forget(command, team[x][0])
          else:
              print("not sent")   
 

@@ -4,18 +4,18 @@ import sys
 
 #local dp
 import configs.config_priv as conf
-import manual_drive
-import puller_team
-import solo
-import support_team
+import programs.manual_drive
+import programs.puller_team
+import programs.solo
+import programs.support_team
 
 
 
 programs = {
-    "support_team": support_team.main,
-    "puller_team": puller_team.main,
-    "manual_drive": manual_drive.main,
-    "solo": solo.main
+    "support_team": programs.support_team.main,
+    "puller_team": programs.puller_team.main,
+    "manual_drive": programs.manual_drive.main,
+    "solo": programs.solo.main
 }
 
 roles = [
